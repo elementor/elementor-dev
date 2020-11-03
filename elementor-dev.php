@@ -11,7 +11,8 @@
  * @package Elementor_Dev
  */
 
-use ElementorDev\Core\Plugin;
+use ElementorDev\Bootstrap;
+use ElementorDev\Autoloader;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -33,19 +34,9 @@ if ( ! defined( 'ELEMENTOR_DEV_VERSION' ) ) {
 	define( 'ELEMENTOR_DEV_VERSION', '1.0.0' );
 }
 
-add_action( 'plugins_loaded', function () {
-	load_plugin_textdomain( 'elementor-dev' );
-} );
+// Run autoloader
+require_once __DIR__ . '/autoloader.php';
+Autoloader::run();
 
-
-add_action( 'plugins_loaded', function () {
-	require_once dirname( __FILE__ ) . '/core/plugin.php';
-
-	$plugin = Plugin::instance();
-
-	if ( ! $plugin->can_bootstrap() ) {
-		return;
-	}
-
-	$plugin->bootstrap();
-} );
+// Bootstrap the plugin
+new Bootstrap();

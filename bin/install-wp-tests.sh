@@ -6,12 +6,15 @@ then
     exit 0
 fi
 
-read -p "Choose a database Name for tests: " DB_NAME
-read -p "What is your database username? " DB_USER
-read -p "What is your database password? " DB_PASS
+read -p "Choose a database Name for tests [elementor-dev-tests]: " DB_NAME
+read -p "What is your database username [admin]? " DB_USER
+read -p "What is your database password [admin]? " DB_PASS
 read -p "What is your database host [127.0.0.1]? " DB_HOST
 read -p "Choose WordPress version for testing [latest]: " WP_VERSION
 
+DB_NAME=${DB_NAME:-"elementor-dev-tests"}
+DB_USER=${DB_USER:-"admin"}
+DB_PASS=${DB_PASS:-"admin"}
 DB_HOST=${DB_HOST:-"127.0.0.1"}
 WP_VERSION=${WP_VERSION:-"latest"}
 
@@ -19,6 +22,7 @@ WORKING_DIR=$(pwd)
 
 WP_TESTS_UTILS_DIR=${WP_TESTS_UTILS_DIR-$WORKING_DIR/tmp/wordpress-tests-lib}
 WP_CORE_DIR=${WP_CORE_DIR-$WORKING_DIR/tmp/wordpress/}
+ELEMENTOR_PLUGIN_DIR=${ELEMENTOR_PLUGIN_DIR-"$WP_CORE_DIR"wp-content/plugins}
 
 download() {
     if [ `which curl` ]; then
@@ -118,7 +122,14 @@ install_db() {
 	mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
 }
 
+install_elementor_plugin() {
+	rm -rf "$ELEMENTOR_PLUGIN_DIR"elementor
+	download https://downloads.wordpress.org/plugin/elementor.latest-stable.zip  /tmp/elementor.zip
+	unzip -q /tmp/elementor.zip -d "$ELEMENTOR_PLUGIN_DIR"
+}
+
 check_for_svn
 install_wp
 install_test_suite
+install_elementor_plugin
 install_db

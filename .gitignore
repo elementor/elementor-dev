@@ -1,0 +1,19 @@
+# directories
+node_modules/
+log/
+vendor/
+tmp/
+
+# build outputs
+*.log
+*.map
+
+# IDE's
+.project/
+.vscode/
+.idea/
+
+# other
+Thumbs.db
+*.DS_Store
+coverage/

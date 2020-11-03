@@ -1,0 +1,25 @@
+{
+    "name": "elementor/elementor-dev",
+    "homepage": "https://elementor.com/",
+    "type": "wordpress-plugin",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Elementor Team",
+            "email": "support@elementor.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpunit/phpunit": "^5"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "bash ./bin/install-wp-tests.sh"
+        ],
+        "test": [
+            "phpunit"
+        ]
+    }
+}

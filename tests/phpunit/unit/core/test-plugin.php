@@ -1,5 +1,5 @@
 <?php
-namespace ElementorDev\Tests\Phpunit\Core;
+namespace ElementorDev\Tests;
 
 use ElementorDev\Core\Plugin;
 use ElementorDev\Tests\Phpunit\Base_Test;

@@ -16,7 +16,7 @@ define( 'PLUGIN_PATH', PLUGIN_FOLDER . '/' . PLUGIN_FILE );
 
 // Activates this plugin in WordPress so it can be tested.
 $GLOBALS['wp_tests_options'] = [
-	'active_plugins' => [ PLUGIN_PATH ],
+	'active_plugins' => [ 'elementor/elementor.php', PLUGIN_PATH ],
 	'template' => 'twentynineteen',
 	'stylesheet' => 'twentynineteen',
 ];
@@ -33,6 +33,7 @@ tests_add_filter( 'muplugins_loaded', function () {
 tests_add_filter( 'shutdown', 'drop_tables', 999999 );
 
 require $_tests_dir . '/includes/bootstrap.php';
+require __DIR__ . '/auth-trait.php';
 require __DIR__ . '/base-test.php';
 
 remove_action( 'admin_init', '_maybe_update_themes' );

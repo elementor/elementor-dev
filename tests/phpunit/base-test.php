@@ -8,5 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Base_Test extends WP_UnitTestCase {
-	//
+	use Auth_Trait;
+
+	public function tearDown() {
+		parent::tearDown();
+
+		set_current_screen( 'dashboard' );
+	}
 }

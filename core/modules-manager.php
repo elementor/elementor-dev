@@ -1,6 +1,8 @@
 <?php
 namespace ElementorDev\Core;
 
+use ElementorDev\Core\Base\Module;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -15,12 +17,7 @@ class Modules_Manager {
 	 */
 	private $modules = [];
 
-	/**
-	 * Modules manager constructor.
-	 *
-	 * Initializing the Elementor modules manager.
-	 */
-	public function __construct() {
+	public function load_modules() {
 		$modules_namespace_prefix = $this->get_modules_namespace_prefix();
 
 		foreach ( $this->get_modules_names() as $module_name ) {

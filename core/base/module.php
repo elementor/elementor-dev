@@ -1,5 +1,5 @@
 <?php
-namespace ElementorDev\Core;
+namespace ElementorDev\Core\Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -7,18 +7,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class Module {
 	/**
-	 * Module instance.
+	 * Class instance.
 	 *
-	 * @var Module
+	 * @var static
 	 */
 	protected static $instance = null;
 
 	/**
 	 * Instance.
 	 *
-	 * Ensures only one instance of the module class is loaded or can be loaded.
+	 * Ensures only one instance of the class is loaded or can be loaded.
 	 *
-	 * @return Module An instance of the class.
+	 * @return static An instance of the class.
 	 */
 	public static function instance() {
 		if ( is_null( static::$instance ) ) {

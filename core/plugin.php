@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Plugin {
 	/**
-	 * Plugin instance.
+	 * Class instance.
 	 *
-	 * @var Plugin
+	 * @var static
 	 */
 	protected static $instance = null;
 
@@ -21,9 +21,9 @@ class Plugin {
 	/**
 	 * Instance.
 	 *
-	 * Ensures only one instance of the plugin class is loaded or can be loaded.
+	 * Ensures only one instance of the class is loaded or can be loaded.
 	 *
-	 * @return Plugin
+	 * @return static An instance of the class.
 	 */
 	public static function instance() {
 		if ( is_null( static::$instance ) ) {
@@ -34,53 +34,18 @@ class Plugin {
 	}
 
 	/**
-	 * Bootstrap the plugin.
+	 * Plugin constructor.
 	 */
-	public function bootstrap() {
-		$this->register_autoloader();
+	public function __construct() {
+		$this->modules_manager = new Modules_Manager();
 
-		register_activation_hook( ELEMENTOR_DEV_FILE, [ $this, 'activate' ] );
-		add_action( 'init', [ static::class, 'instance' ] );
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**
-	 * Checks if the plugin can bootstrap, if not show a notice for the admin.
-	 *
-	 * @return bool
+	 * Init.
 	 */
-	public function can_bootstrap() {
-		$is_elementor_exists = class_exists( 'Elementor\\Plugin' );
-
-		if ( ! $is_elementor_exists ) {
-			// Here will be the notice code.
-
-//			require_once dirname( __FILE__ ) . '/notices.php';
-//
-//			$notices = new Notices();
-//
-//			add_action( 'admin_notices', [ $notices, 'elementor_not_installed' ] );
-		}
-
-		return $is_elementor_exists;
-	}
-
-	/**
-	 * Run some actions when activate.
-	 */
-	public function activate() {
-		//
-	}
-
 	public function init() {
-		$this->modules_manager = new Modules_Manager();
+		$this->modules_manager->load_modules();
 	}
-
-	/**
-	 * Register autoloader.
-	 */
-	private function register_autoloader() {
-		require_once __DIR__ . '/autoloader.php';
-
-		Autoloader::run();
-	}}
+}

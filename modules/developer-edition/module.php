@@ -8,5 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Module extends BaseModule {
-	//
+	/**
+	 * Module constructor.
+	 */
+	public function __construct() {
+		new Version_Control();
+	}
 }

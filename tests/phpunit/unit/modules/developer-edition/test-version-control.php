@@ -60,6 +60,13 @@ class Test_Version_Control extends Base_Test {
 		$this->assertEquals( 'https://test-url.com/' . $expected_version, $elementor_response->package );
 	}
 
+	public function version_that_should_have_updates_data_provider() {
+		return [
+			[ '3.1.0-dev1', '3.1.0-dev2', 'Same patch version, lower dev' ],
+			[ '3.0.0', '3.1.0-dev2', 'Stable version lower than dev' ],
+		];
+	}
+
 	/** @dataProvider version_that_should_not_have_updates_data_provider */
 	public function test_pre_set_site_transient_update_plugins__should_not_return_updates( $version, $description ) {
 		// Arrange
@@ -70,13 +77,6 @@ class Test_Version_Control extends Base_Test {
 
 		// Assert
 		$this->assertArrayNotHasKey( Bootstrap::ELEMENTOR_PLUGIN_NAME, $result->response, $description );
-	}
-
-	public function version_that_should_have_updates_data_provider() {
-		return [
-			[ '3.1.0-dev1', '3.1.0-dev2', 'Same patch version, lower dev' ],
-			[ '3.0.0', '3.1.0-dev2', 'Stable version lower than dev' ],
-		];
 	}
 
 	public function version_that_should_not_have_updates_data_provider() {
@@ -92,5 +92,32 @@ class Test_Version_Control extends Base_Test {
 		$result = $this->version_control->get_latest_stable_release();
 
 		$this->assertEquals( '3.2.0', $result );
+	}
+
+	/** @dataProvider is_valid_rollback_version_data_provider */
+	public function test_is_valid_rollback_version( $version, $expect_valid ) {
+		$result = $this->version_control->is_valid_rollback_version( false, $version );
+
+		$this->assertEquals( $expect_valid, $result );
+	}
+
+	public function is_valid_rollback_version_data_provider() {
+		return [
+			[ '3.0.0', true ],
+			[ '3.1.0', true ],
+			[ '20.21.21', true ],
+			[ '3.1.0-dev', true ],
+			[ '3.1.0.1-dev', true ],
+			[ '3.1.0.1-dev1', true ],
+			[ '22.22.22-dev', true ],
+			[ '22.22.22-dev1', true ],
+			[ '3.1.0-dev2', true ],
+			[ '3.1.0-beta', false ],
+			[ '3.1.0.1-beta', false ],
+			[ '3.1.0.1-beta1', false ],
+			[ '3.1.0-rc', false ],
+			[ '3.1.0-beta1', false ],
+			[ '3.1.0-rc3', false ],
+		];
 	}
 }

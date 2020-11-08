@@ -22,6 +22,7 @@ class Version_Control {
 	 */
 	public function __construct() {
 		add_filter( 'pre_set_site_transient_update_plugins', [ $this, 'pre_set_site_transient_update_plugins' ] );
+		add_filter( 'elementor/settings/tools/rollback/is_valid_rollback_version', [ $this, 'is_valid_rollback_version' ], 10, 2 );
 	}
 
 	/**
@@ -45,6 +46,11 @@ class Version_Control {
 	public static function on_activate_and_deactivate_plugin() {
 		// Force recheck for new plugin versions
 		delete_site_transient( 'update_plugins' );
+
+		if ( defined( 'ELEMENTOR_VERSION' ) ) {
+			// Force recalculate rollback versions in elementor.
+			delete_transient( 'elementor_rollback_versions_' . ELEMENTOR_VERSION );
+		}
 	}
 
 	/**
@@ -84,6 +90,20 @@ class Version_Control {
 		$transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ]->package = $download_url;
 
 		return $transient;
+	}
+
+	/**
+	 * Return true if the version is stable or with the same channel
+	 *
+	 * Examples for valid version: 1.0.0, 1.0.0-dev1, 1.0.0.1, 1.0.0.1-dev2
+	 *
+	 * @param $is_valid
+	 * @param $version
+	 *
+	 * @return bool
+	 */
+	public function is_valid_rollback_version( $is_valid, $version ) {
+		return (bool) preg_match( '/^\d+(\.\d+){2,3}(-dev\d*)?$/', $version );
 	}
 
 	/**

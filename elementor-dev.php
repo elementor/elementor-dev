@@ -32,6 +32,10 @@ if ( ! defined( 'ELEMENTOR_DEV_DIR' ) ) {
 	define( 'ELEMENTOR_DEV_DIR', plugin_dir_path( __FILE__ ) );
 }
 
+if ( ! defined( 'ELEMENTOR_DEV_URL' ) ) {
+	define( 'ELEMENTOR_DEV_URL', plugin_dir_url( __FILE__ ) );
+}
+
 if ( ! defined( 'ELEMENTOR_DEV_NAMESPACE' ) ) {
 	define( 'ELEMENTOR_DEV_NAMESPACE', 'ElementorDev' );
 }

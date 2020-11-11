@@ -10,9 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Base_Test extends WP_UnitTestCase {
 	use Auth_Trait;
 
-	public function tearDown() {
-		parent::tearDown();
+	public function setUp() {
+		parent::setUp();
+
+		global $wp_styles;
 
 		set_current_screen( 'dashboard' );
+		$wp_styles = new \WP_Styles();
 	}
 }

@@ -13,5 +13,6 @@ class Module extends BaseModule {
 	 */
 	public function __construct() {
 		new Version_Control();
+		new Admin_Bar();
 	}
 }

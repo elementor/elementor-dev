@@ -8,11 +8,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Module extends BaseModule {
+	const SETTINGS_KEY = 'elementor_dev_developer_edition';
+
+	/**
+	 * @var Version_Control
+	 */
+	public $version_control;
+
 	/**
 	 * Module constructor.
 	 */
 	public function __construct() {
-		new Version_Control();
+		$this->version_control = new Version_Control();
+		new Settings_Page();
+		new Auto_Update();
 		new Admin_Bar();
 	}
 }

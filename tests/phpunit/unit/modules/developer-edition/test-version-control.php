@@ -29,18 +29,15 @@ class Test_Version_Control extends Base_Test {
 			'3.2.0',
 		];
 
-		set_site_transient( Version_Control::get_wp_org_data_transient_key(),
-			[
-				'name' => 'Elementor Website Builder',
-				'slug' => 'elementor',
-				'versions' => array_reduce(
-					$versions,
-					function ( $current, $value ) {
-						return array_merge( $current, [ $value => 'https://test-url.com/' . $value ] );
-					},
-					[]
-				),
-			]
+		set_site_transient(
+			Version_Control::get_wp_org_data_transient_key(),
+			array_reduce(
+				$versions,
+				function ( $current, $value ) {
+					return array_merge( $current, [ $value => 'https://test-url.com/' . $value ] );
+				},
+				[]
+			)
 		);
 	}
 
@@ -89,5 +86,11 @@ class Test_Version_Control extends Base_Test {
 			[ '3.1.0-dev3', 'Bigger dev version, Lower dev' ],
 			[ '3.1.1-dev1', 'Bigger stable version, Lower dev' ],
 		];
+	}
+
+	public function test_get_latest_stable_release() {
+		$result = $this->version_control->get_latest_stable_release();
+
+		$this->assertEquals( '3.2.0', $result );
 	}
 }

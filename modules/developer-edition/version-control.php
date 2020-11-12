@@ -25,21 +25,6 @@ class Version_Control {
 	}
 
 	/**
-	 * Holds the transient key of the latest tag for elementor.
-	 *
-	 * @return string
-	 */
-	public static function get_latest_tag_transient_key() {
-		static $key;
-
-		if ( ! $key ) {
-			$key = md5( 'elementor_dev_latest_tag' );
-		}
-
-		return $key;
-	}
-
-	/**
 	 * Holds the transient key of the versions data that returns from wp.org.
 	 *
 	 * @return string
@@ -70,9 +55,6 @@ class Version_Control {
 	 * @return object
 	 */
 	public function pre_set_site_transient_update_plugins( $transient ) {
-		// Clear latest tag data
-		delete_site_transient( static::get_latest_tag_transient_key() );
-
 		$current_version = $this->get_elementor_plugin_data()['Version'];
 		$latest_dev_release = $this->get_latest_dev_release();
 
@@ -109,12 +91,26 @@ class Version_Control {
 	 *
 	 * @return string|null
 	 */
-	private function get_latest_dev_release() {
-		$tagged_version = get_site_transient( static::get_latest_tag_transient_key() );
+	public function get_latest_dev_release() {
+		return $this->get_latest_release_by_channel( 'dev' );
+	}
 
-		if ( ! empty( $tagged_version ) ) {
-			return $tagged_version;
-		}
+	/**
+	 * Returns the latest stable tag release.
+	 *
+	 * @return string|null
+	 */
+	public function get_latest_stable_release() {
+		return $this->get_latest_release_by_channel( 'stable' );
+	}
+
+	/**
+	 * @param $channel
+	 *
+	 * @return int|string|null
+	 */
+	private function get_latest_release_by_channel( $channel ) {
+		$tagged_version = null;
 
 		$data = $this->get_wp_org_data();
 
@@ -122,20 +118,23 @@ class Version_Control {
 			return null;
 		}
 
-		foreach ( $data['versions'] as $version => $download_url ) {
+		$regex = "/^\d+(\.\d+){2,3}-{$channel}\d*$/";
+
+		if ( 'stable' === $channel ) {
+			$regex = '/^\d+(\.\d+){2,3}$/';
+		}
+
+		foreach ( $data as $version => $download_url ) {
 			if ( 'trunk' === $version ) {
 				continue;
 			}
 
-			if ( 0 === preg_match( '/.*-' . $this->get_channel() . '.*/', $version ) ) {
+			if ( 0 === preg_match_all( $regex, $version ) ) {
 				continue;
 			}
 
 			$tagged_version = $version;
 		}
-
-		// Store cache for 6 hours.
-		set_site_transient( static::get_latest_tag_transient_key(), $tagged_version, HOUR_IN_SECONDS * 6 );
 
 		return $tagged_version;
 	}
@@ -158,7 +157,17 @@ class Version_Control {
 			return [];
 		}
 
-		$data = json_decode( $data['body'], true );
+		$data = json_decode( $data['body'], true )['versions'];
+
+		// The versions that returns from the WordPress API are in a wrong order.
+		// so before caching it, the function below reorders the versions from earlier version to the latest.
+		uasort( $data, function ( $ver_a, $ver_b ) {
+			if ( version_compare( $ver_a, $ver_b, '<' ) ) {
+				return -1;
+			}
+
+			return 1;
+		} );
 
 		// Store cache for 6 hours.
 		set_site_transient( static::get_wp_org_data_transient_key(), $data, HOUR_IN_SECONDS * 6 );
@@ -176,18 +185,11 @@ class Version_Control {
 	private function get_download_url( $version ) {
 		$data = $this->get_wp_org_data();
 
-		if ( empty( $data['versions'][ $version ] ) ) {
+		if ( empty( $data[ $version ] ) ) {
 			return false;
 		}
 
-		return $data['versions'][ $version ];
-	}
-
-	/**
-	 * @return string
-	 */
-	private function get_channel() {
-		return 'dev';
+		return $data[ $version ];
 	}
 
 	/**

@@ -1,0 +1,57 @@
+.elementor-dev .elementor-panel #elementor-panel-header-title.elementor-dev-badge::after,
+.elementor-dev #toplevel_page_elementor .wp-menu-name::after {
+	content: "DEV";
+	display: inline-block;
+	position: relative;
+	font-size: 9px;
+	padding: 2px 3px;
+	line-height: 1;
+	border-radius: 2px;
+	font-weight: 600;
+	margin-left: 10px;
+}
+
+html[dir="rtl"] .elementor-dev .elementor-panel #elementor-panel-header-title.elementor-dev-badge::after,
+html[dir="rtl"] .elementor-dev #toplevel_page_elementor .wp-menu-name::after {
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+.elementor-dev .elementor-panel #elementor-panel-header-title.elementor-dev-badge::after {
+	top: -3px;
+	color: #495157;
+	background-color: #fff;
+}
+
+.elementor-dev #toplevel_page_elementor .wp-menu-name::after {
+	top: -1px;
+	background-color: rgba(240, 245, 250, 0.6);
+	color: #23282d;
+}
+
+.elementor-dev #toplevel_page_elementor a.wp-has-current-submenu .wp-menu-name::after {
+	top: -1px;
+	background-color: #fff;
+}
+
+html[dir="rtl"] .elementor-dev #toplevel_page_elementor .wp-menu-name::after {
+	top: -3px;
+}
+
+.elementor-dev .elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
+	border-bottom: 3px solid #23282d;
+}
+
+.elementor-dev .elementor-panel #elementor-panel-header {
+	background-color: #495157;
+}
+
+.elementor-dev.elementor-dev-theme-dark .elementor-panel #elementor-panel-header {
+	background-color: #26292C;
+}
+
+@media (prefers-color-scheme: dark) {
+	.elementor-dev.elementor-dev-theme-auto .elementor-panel #elementor-panel-header {
+		background-color: #26292C;
+	}
+}

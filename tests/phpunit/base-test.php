@@ -14,8 +14,10 @@ class Base_Test extends WP_UnitTestCase {
 		parent::setUp();
 
 		global $wp_styles;
+		global $wp_scripts;
 
 		set_current_screen( 'dashboard' );
-		$wp_styles = new \WP_Styles();
+		$wp_styles = new \WP_Styles(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		$wp_scripts = new \WP_Scripts(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	}
 }

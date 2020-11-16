@@ -18,13 +18,6 @@ class UI {
 			true
 		);
 
-		wp_enqueue_style(
-			'elementor-dev-developer-edition',
-			ELEMENTOR_DEV_URL . 'modules/developer-edition/assets/css/developer-edition.css',
-			[],
-			ELEMENTOR_DEV_VERSION
-		);
-
 		$ui_theme = 'auto';
 		$elementor_preferences = get_user_meta( get_current_user_id(), 'elementor_preferences', true );
 
@@ -33,6 +26,18 @@ class UI {
 		}
 
 		wp_add_inline_script( 'elementor-dev-developer-edition', "const elementorDevUiTheme = '{$ui_theme}';" );
+	}
+
+	/**
+	 * Enqueue styles
+	 */
+	public function enqueue_styles() {
+		wp_enqueue_style(
+			'elementor-dev-developer-edition',
+			ELEMENTOR_DEV_URL . 'modules/developer-edition/assets/css/developer-edition.css',
+			[],
+			ELEMENTOR_DEV_VERSION
+		);
 	}
 
 	/**
@@ -64,6 +69,8 @@ class UI {
 	 */
 	public function __construct() {
 		add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_filter( 'body_class', [ $this, 'add_body_class' ] );
 		add_filter( 'admin_body_class', [ $this, 'add_admin_body_class' ] );
 	}

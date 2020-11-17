@@ -194,7 +194,7 @@ class Settings_Page {
 
 		$plugin_name = plugin_basename( ELEMENTOR_DEV_FILE );
 
-		add_action( 'admin_menu', [ $this, 'add_to_menus' ], 21 /* After elementor menu */ );
+		add_action( 'admin_menu', [ $this, 'add_to_menus' ], 206 /* After elementor tools sub menu */ );
 		add_action( 'admin_init', [ $this, 'settings_init' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_action( 'admin_head', [ $this, 'add_elementor_dev_modal_template' ] );

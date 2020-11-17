@@ -58,6 +58,7 @@ $reinstall_elementor_url = $should_reinstall_elementor
 <a
 	class="button <?php echo $should_update_elementor ? 'button-primary' : 'button-disabled'; ?>"
 	href="<?php echo $update_elementor_url; ?>"
+	data-loading-text="<?php esc_html_e( 'Updating...', 'elementor-dev' ); ?>"
 >
 	<?php esc_html_e( 'Update Now', 'elementor-dev' ); ?>
 </a>
@@ -73,6 +74,7 @@ $reinstall_elementor_url = $should_reinstall_elementor
 <a
 	class="button <?php echo $should_reinstall_elementor ? '' : 'button-disabled'; ?>"
 	href="<?php echo $reinstall_elementor_url; ?>"
+	data-loading-text="<?php esc_html_e( 'Re-installing...', 'elementor-dev' ); ?>"
 >
 	<?php esc_html_e( 'Re-install now', 'elementor-dev' ); ?>
 </a>
@@ -106,3 +108,18 @@ $reinstall_elementor_url = $should_reinstall_elementor
 	)
 	?>
 </p>
+
+<script>
+	document.querySelectorAll( 'a[data-loading-text]' ).forEach( ( el ) => {
+		el.addEventListener( 'click', ( e ) => {
+			if ( e.target.classList.contains( 'button-disabled' ) ) {
+				e.preventDefault();
+
+				return;
+			}
+
+			e.target.classList.add( 'button-disabled' );
+			e.target.innerHTML = e.target.dataset.loadingText;
+		} )
+	} );
+</script>

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 		<p style="max-width: 750px;">
 			<?php esc_html_e(
-				'Get a sneak peek at our in progress development versions, and help us improve Elementor to perfection. Developer Edition releases contain experimental functionality for testing purposes. This channel will also include RC and Beta releases.',
+				'This plugin gives you direct access into Elementor’s development process, and lets you take an active part in perfecting our product. Each Developer Edition release contains experimental functionalities for testing purposes.',
 				'elementor-dev'
 			); ?>
 		</p>

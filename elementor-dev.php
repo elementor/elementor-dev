@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Elementor Dev
+ * Plugin Name: Elementor Developer Edition
  * Plugin URI: https://elementor.com
- * Description: Run bleeding edge versions of Elementor. This will replace your installed version of Elementor with the latest tagged release - use with caution, and not on production sites.
+ * Description: Elementor Developer Edition gives you direct access into Elementor’s development process, and lets you take an active part in perfecting our product. Each Developer Edition release contains experimental functionalities for testing purposes.
  * Version: 1.0.0
  * Author: Elementor.com
  * Author URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=dev-author-uri&utm_medium=wp-dash

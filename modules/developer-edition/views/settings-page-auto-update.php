@@ -15,11 +15,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 </label>
 <br/><br/>
 <p style="max-width: 900px;">
-	<?php
-	echo sprintf(
-		/* translators: %s: Plugin name. */
-		__( 'When activating %s, the auto updates for the installed versions will be enabled unless you uncheck this checkbox or opt-out manually in the Plugins screen.', 'elementor-dev' ),
-		__( 'Elementor Developer Edition', 'elementor-dev' )
-	);
-	?>
+	<?php esc_html_e( 'Activating auto updates will periodically update your Elementor plugin to the latest available release.', 'elementor-dev' ); ?>
 </p>

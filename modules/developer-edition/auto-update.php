@@ -13,7 +13,7 @@ class Auto_Update {
 	 * Auto_Update constructor.
 	 */
 	public function __construct() {
-		add_filter( 'auto_update_plugin', [ $this, 'auto_update_elementor' ], 10, 2 );
+//		add_filter( 'auto_update_plugin', [ $this, 'auto_update_elementor' ], 10, 2 );
 	}
 
 	/**

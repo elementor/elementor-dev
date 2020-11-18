@@ -3,6 +3,7 @@ namespace ElementorDev\Modules\DeveloperEdition;
 
 use Elementor\Plugin;
 use Elementor\Settings;
+use ElementorDev\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -42,7 +43,10 @@ class Settings_Page {
 				null,
 				static::PAGE_ID
 			);
-			register_setting( Module::SETTINGS_KEY, 'elementor_dev_auto_update' );
+
+			register_setting( Module::SETTINGS_KEY, 'elementor_dev_auto_update', [
+				'sanitize_callback' => [ $this, 'update_auto_update' ],
+			] );
 
 			add_settings_field(
 				'elementor-dev-developer-edition-auto-update-field',
@@ -148,6 +152,25 @@ class Settings_Page {
 		}
 
 		Plugin::$instance->common->add_template( __DIR__ . '/views/settings-page-get-updates-modal.php' );
+	}
+
+	/**
+	 * Update auto update plugins option.
+	 *
+	 * @param $value
+	 */
+	public function update_auto_update( $value ) {
+		$auto_updates = (array) get_site_option( 'auto_update_plugins', [] );
+
+		if ( 'yes' === $value ) {
+			$auto_updates = array_unique( array_merge( $auto_updates, [ Bootstrap::ELEMENTOR_PLUGIN_NAME ] ) );
+		} else {
+			$auto_updates = array_filter( $auto_updates, function ( $plugin ) {
+				return Bootstrap::ELEMENTOR_PLUGIN_NAME !== $plugin;
+			} );
+		}
+
+		update_site_option( 'auto_update_plugins', $auto_updates );
 	}
 
 	/**

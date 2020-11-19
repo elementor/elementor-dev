@@ -34,6 +34,16 @@ html[dir="rtl"] .elementor-dev #toplevel_page_elementor .wp-menu-name::after {
 	background-color: #fff;
 }
 
+.admin-color-light.elementor-dev #toplevel_page_elementor .wp-menu-name::after {
+	background-color: #999;
+	color: #fff;
+}
+
+.admin-color-light.elementor-dev #toplevel_page_elementor a.wp-has-current-submenu .wp-menu-name::after {
+	background-color: #ccc;
+	color: #23282d;
+}
+
 html[dir="rtl"] .elementor-dev #toplevel_page_elementor .wp-menu-name::after {
 	top: -3px;
 }

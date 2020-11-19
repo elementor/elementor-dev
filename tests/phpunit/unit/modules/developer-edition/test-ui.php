@@ -24,6 +24,19 @@ class Test_UI extends Base_Test {
 		$this->assertTrue( in_array( 'elementor-dev-developer-edition', $wp_scripts->queue, true ) );
 	}
 
+	public function test_enqueue_styles__should_enqueue_styles_on_admin() {
+		// Arrange
+		global $wp_styles;
+
+		new UI();
+
+		// Act
+		do_action( 'admin_enqueue_scripts' );
+
+		// Assert
+		$this->assertTrue( in_array( 'elementor-dev-developer-edition', $wp_styles->queue, true ) );
+	}
+
 	public function test_add_body_class() {
 		// Arrange
 		new UI();

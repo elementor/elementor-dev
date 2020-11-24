@@ -32,16 +32,6 @@ $reinstall_elementor_url = $should_reinstall_elementor
 	: '#';
 ?>
 
-<strong>
-	<?php
-	$should_update_elementor
-		? esc_html_e( 'Updated version of Elementor is available.', 'elementor-dev' )
-		: esc_html_e( 'Hurray! You’re up to date with the latest versions of Elementor.', 'elementor-dev' );
-	?>
-</strong>
-
-<br/><br/>
-
 <p><?php
 	/* translators: %s: elementor version. */
 	echo sprintf( __( 'You are using Elementor %s', 'elementor-dev' ), '<strong>' . $elementor_version . '</strong>' );
@@ -54,6 +44,16 @@ $reinstall_elementor_url = $should_reinstall_elementor
 <?php endif; ?>
 
 <br/>
+
+<strong>
+	<?php
+	$should_update_elementor
+		? esc_html_e( 'Updated version of Elementor is available.', 'elementor-dev' )
+		: esc_html_e( 'Hooray! You’re up to date with the latest versions of Elementor.', 'elementor-dev' );
+	?>
+</strong>
+
+<br/><br/>
 
 <a
 	class="button <?php echo $should_update_elementor ? 'button-primary' : 'button-disabled'; ?>"
@@ -82,7 +82,7 @@ $reinstall_elementor_url = $should_reinstall_elementor
 <p>
 	<?php
 	/* translators: %s: Plugin name. */
-	echo sprintf( __( '%s is an unstable testing and development version. We recommend using development versions on staging environments only, and to backup all data before updating.', 'elementor-dev' ), __( 'Elementor Developer Edition', 'elementor-dev' ) );
+	echo sprintf( __( '%s is a testing tool for new features and should not be used on live sites. Use staging environments only, and backup all your data before updating.', 'elementor-dev' ), __( 'Elementor Developer Edition', 'elementor-dev' ) );
 	?>
 	<br/>
 	<?php

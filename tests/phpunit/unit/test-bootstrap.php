@@ -2,7 +2,6 @@
 namespace ElementorDev\Tests;
 
 use ElementorDev\Bootstrap;
-use ElementorDev\Core\Notices;
 use ElementorDev\Tests\Phpunit\Base_Test;
 
 if ( ! defined( 'ABSPATH' ) ) {

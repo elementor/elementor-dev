@@ -52,6 +52,10 @@ html[dir="rtl"] .elementor-dev #toplevel_page_elementor .wp-menu-name::after {
 	border-bottom: 3px solid #23282d;
 }
 
+.elementor-dev.elementor-dev-theme-dark .elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
+	border-bottom: 3px solid #fff;
+}
+
 .elementor-dev .elementor-panel #elementor-panel-header {
 	background-color: #495157;
 }

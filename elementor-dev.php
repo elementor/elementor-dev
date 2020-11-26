@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Elementor Developer Edition
  * Plugin URI: https://elementor.com
- * Description: Elementor Developer Edition gives you direct access into Elementor’s development process, and lets you take an active part in perfecting our product. Each Developer Edition release contains experimental functionalities for testing purposes.
+ * Description: Elementor Developer Edition gives you direct access into Elementor’s development process, and lets you take an active part in perfecting our product. Each Developer Edition release will contain experimental functionalities that developers will be able to use to get familiar with the next releases before they are published.
  * Version: 1.0.0
  * Author: Elementor.com
  * Author URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=dev-author-uri&utm_medium=wp-dash

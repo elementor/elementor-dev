@@ -42,7 +42,7 @@ class Admin_Bar {
 			'id' => 'elementor_dev_secondary_report_issue',
 			'title' => __( 'Report an issue', 'elementor-dev' ),
 			'parent' => 'top-secondary',
-			'href' => 'https://github.com/elementor/elementor/issues',
+			'href' => 'https://go.elementor.com/wp-dash-report-an-issue/',
 			'meta' => [
 				'target' => '_blank',
 			],

@@ -1,8 +1,8 @@
-=== Developer Edition for Elementor ===
+=== Elementor Dev ===
 Contributors: elemntor, KingYes, ariel.k
 Tags: elementor, website builder, beta, developer, bleeding edge, testing, landing page, drag-and-drop, visual editor
 Requires at least: 5.0
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GPLv3

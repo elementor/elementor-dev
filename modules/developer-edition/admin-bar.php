@@ -77,12 +77,12 @@ class Admin_Bar {
 		] );
 
 		$elementor_version = null;
-		$elementor_path = ABSPATH . '/wp-content/plugins/' . Bootstrap::ELEMENTOR_PLUGIN_NAME;
+		$elementor_path = plugin_dir_path( Bootstrap::ELEMENTOR_PLUGIN_NAME );
 
 		if ( defined( 'ELEMENTOR_VERSION' ) ) {
 			$elementor_version = ELEMENTOR_VERSION;
 		} elseif ( is_readable( $elementor_path ) ) {
-			$elementor_version = get_file_data( ABSPATH . '/wp-content/plugins/' . Bootstrap::ELEMENTOR_PLUGIN_NAME, [ 'Version' => 'Version' ], false )['Version'];
+			$elementor_version = get_file_data( $elementor_path, [ 'Version' => 'Version' ], false )['Version'];
 		}
 
 		if ( $elementor_version ) {

@@ -8,7 +8,7 @@
  * Author URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=dev-author-uri&utm_medium=wp-dash
  * Text Domain: elementor-dev
  *
- * @package Elementor_Dev
+ * @package elementor-dev
  */
 
 use ElementorDev\Bootstrap;

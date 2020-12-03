@@ -1,4 +1,4 @@
-=== Elementor Dev ===
+=== Elementor Beta ===
 Contributors: elemntor, KingYes, ariel.k
 Tags: elementor, website builder, beta, developer, bleeding edge, testing, landing page, drag-and-drop, visual editor
 Requires at least: 5.0

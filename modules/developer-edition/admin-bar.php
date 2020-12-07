@@ -8,6 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Admin_Bar {
+	const REPORT_AN_ISSUE_URL = 'https://go.elementor.com/wp-dash-report-an-issue/';
+
 	/**
 	 * Admin_Bar constructor.
 	 */
@@ -42,7 +44,7 @@ class Admin_Bar {
 			'id' => 'elementor_dev_secondary_report_issue',
 			'title' => __( 'Report an issue', 'elementor-dev' ),
 			'parent' => 'top-secondary',
-			'href' => 'https://go.elementor.com/wp-dash-report-an-issue/',
+			'href' => self::REPORT_AN_ISSUE_URL,
 			'meta' => [
 				'target' => '_blank',
 			],
@@ -69,7 +71,7 @@ class Admin_Bar {
 		$wp_admin_bar->add_menu( [
 			'id' => 'elementor_inspector_elementor_dev_report',
 			'parent' => 'elementor_inspector_elementor_dev',
-			'href' => 'https://github.com/elementor/elementor/issues',
+			'href' => self::REPORT_AN_ISSUE_URL,
 			'title' => '<strong>' . __( 'Report an issue', 'elementor-dev' ) . '</strong>',
 			'meta' => [
 				'target' => '_blank',

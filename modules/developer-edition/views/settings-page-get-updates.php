@@ -88,13 +88,13 @@ $reinstall_elementor_url = $should_reinstall_elementor
 	?>
 	<br/>
 	<?php
-	/* translators: %s: Learn more link. */
+	/* translators: %1$s: Learn more link, %2$s: Plugin name */
 	echo sprintf(
-		__( '%s about Elementor Developer Edition', 'elementor-dev' ),
-		sprintf( '<a href="https://go.elementor.com/wp-dash-developer-edition" target="_blank">%s</a>', __( 'Learn more', 'elementor-dev' ) )
+		__( '%1$s about %2$s.', 'elementor-dev' ),
+		sprintf( '<a href="https://go.elementor.com/wp-dash-developer-edition" target="_blank">%s</a>', __( 'Learn more', 'elementor-dev' ) ),
+		__( 'Elementor Developer Edition', 'elementor-dev' )
 	)
 	?>
-	<?php esc_html_e( 'Elementor Developer Edition', 'elementor-dev' ); ?>
 </p>
 
 <br/><br/>

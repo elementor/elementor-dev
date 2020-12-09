@@ -21,7 +21,6 @@ class Module extends BaseModule {
 	public function __construct() {
 		$this->version_control = new Version_Control();
 		new Settings_Page();
-		new Auto_Update();
 		new Admin_Bar();
 		new UI();
 	}

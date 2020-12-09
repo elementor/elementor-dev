@@ -23,5 +23,6 @@ class Module extends BaseModule {
 		new Settings_Page();
 		new Admin_Bar();
 		new UI();
+		new Experiments();
 	}
 }

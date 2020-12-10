@@ -16,6 +16,7 @@ class Admin_Bar {
 	public function __construct() {
 		add_action( 'admin_bar_menu', [ $this, 'add_menu_in_admin_bar' ], 202 /* after elementor inspector */ );
 		add_action( 'wp_enqueue_scripts', [ $this, 'print_style' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'print_style' ] );
 	}
 
 	/**
@@ -31,15 +32,7 @@ class Admin_Bar {
 	 * @param \WP_Admin_Bar $wp_admin_bar
 	 */
 	public function add_menu_in_admin_bar( \WP_Admin_Bar $wp_admin_bar ) {
-		if ( is_admin() ) {
-			return;
-		}
-
-		$wp_admin_bar->add_node( [
-			'id' => 'elementor_inspector',
-			'title' => __( 'Elementor Debugger', 'elementor-dev' ),
-		] );
-
+		// Always add "report an issue" link even at admin pages.
 		$wp_admin_bar->add_node( [
 			'id' => 'elementor_dev_secondary_report_issue',
 			'title' => __( 'Report an issue', 'elementor-dev' ),
@@ -48,6 +41,15 @@ class Admin_Bar {
 			'meta' => [
 				'target' => '_blank',
 			],
+		] );
+
+		if ( is_admin() ) {
+			return;
+		}
+
+		$wp_admin_bar->add_node( [
+			'id' => 'elementor_inspector',
+			'title' => __( 'Elementor Debugger', 'elementor-dev' ),
 		] );
 
 		$wp_admin_bar->add_menu( [
@@ -100,7 +102,7 @@ class Admin_Bar {
 	 * Print out the report issue icon.
 	 */
 	public function print_style() {
-		if ( ! is_admin_bar_showing() || is_admin() ) {
+		if ( ! is_admin_bar_showing() ) {
 			return;
 		}
 

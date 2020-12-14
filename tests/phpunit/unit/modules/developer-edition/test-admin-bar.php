@@ -66,23 +66,6 @@ class Test_Admin_Bar extends Base_Test {
 		}
 	}
 
-	public function test_add_menu_to_admin_bar__should_not_load_elementor_dev_admin_bar_when_in_admin_screen() {
-		// Arrange
-		$this->act_as_admin();
-		$admin_bar = new Admin_Bar();
-
-		$screen = \WP_Screen::get( 'admin' );
-		set_current_screen( $screen );
-
-		$wp_admin_bar = new \WP_Admin_Bar();
-
-		// Act
-		do_action( 'admin_bar_menu', $wp_admin_bar );
-
-		// Assert
-		$this->assertEmpty( $wp_admin_bar->get_nodes() );
-	}
-
 	public function test_add_menu_to_admin_bar__should_not_show_system_info_to_users_without_permissions() {
 		// Arrange
 		$this->act_as_editor();
@@ -129,23 +112,6 @@ class Test_Admin_Bar extends Base_Test {
 		$admin_bar = new Admin_Bar();
 
 		$screen = \WP_Screen::get( 'front' );
-		set_current_screen( $screen );
-
-		// Act
-		do_action( 'wp_enqueue_scripts' );
-
-		// Assert
-		$this->assertFalse( in_array( 'elementor-dev-admin-bar-inline', $wp_styles->queue, true ) );
-	}
-
-	public function test_print_style__should_not_print_style_when_screen_is_admin_screen() {
-		// Arrange
-		global $wp_styles;
-
-		show_admin_bar( true );
-		$admin_bar = new Admin_Bar();
-
-		$screen = \WP_Screen::get( 'admin' );
 		set_current_screen( $screen );
 
 		// Act

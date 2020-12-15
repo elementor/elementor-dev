@@ -11,9 +11,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		'panel/menu',
 	]
 
-	$e.routes.on( 'run:after', ( component, command ) => {
+	$e.routes.on( 'run:after', () => {
 		document.getElementById( 'elementor-panel-header-title' )
 			.classList
-			.toggle( 'elementor-dev-badge', routeCommandsToShowDevBadge.includes( command ) )
+			.toggle( 'elementor-dev-badge', routeCommandsToShowDevBadge.includes( $e.routes.current.panel ) )
 	} );
 } );

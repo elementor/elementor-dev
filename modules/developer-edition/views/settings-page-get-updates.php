@@ -87,7 +87,7 @@ if (
 	href="<?php echo $reinstall_elementor_url; ?>"
 	data-loading-text="<?php esc_html_e( 'Re-installing...', 'elementor-dev' ); ?>"
 >
-	<?php esc_html_e( 'Re-install now', 'elementor-dev' ); ?>
+	<?php esc_html_e( 'Re-install Now', 'elementor-dev' ); ?>
 </a>
 
 <br/><br/>

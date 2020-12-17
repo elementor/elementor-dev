@@ -21,14 +21,14 @@ class Settings_Page {
 	public function settings_init() {
 		add_settings_section(
 			'elementor-dev-developer-edition-update',
-			__( 'Elementor Developer Edition', 'elementor-dev' ),
+			__( 'Elementor Developer Edition', 'elementor-beta' ),
 			null,
 			static::PAGE_ID
 		);
 
 		add_settings_field(
 			'elementor-dev-developer-edition-update-child',
-			__( 'Get updates', 'elementor-dev' ),
+			__( 'Get updates', 'elementor-beta' ),
 			function () {
 				$this->load_view( 'settings-page-get-updates.php' );
 			},
@@ -39,7 +39,7 @@ class Settings_Page {
 		if ( current_user_can( 'update_plugins' ) ) {
 			add_settings_section(
 				'elementor-dev-developer-edition-auto-update',
-				__( 'Auto Plugin Updates', 'elementor-dev' ),
+				__( 'Auto Plugin Updates', 'elementor-beta' ),
 				null,
 				static::PAGE_ID
 			);
@@ -50,7 +50,7 @@ class Settings_Page {
 
 			add_settings_field(
 				'elementor-dev-developer-edition-auto-update-field',
-				__( 'Auto update Elementor', 'elementor-dev' ),
+				__( 'Auto update Elementor', 'elementor-beta' ),
 				function () {
 					$this->load_view( 'settings-page-auto-update.php' );
 				},
@@ -62,7 +62,7 @@ class Settings_Page {
 		if ( 'yes' !== get_option( 'elementor_allow_tracking', 'no' ) ) {
 			add_settings_section(
 				'elementor-dev-developer-edition-improve',
-				__( 'Improve Elementor', 'elementor-dev' ),
+				__( 'Improve Elementor', 'elementor-beta' ),
 				null,
 				static::PAGE_ID
 			);
@@ -71,7 +71,7 @@ class Settings_Page {
 
 			add_settings_field(
 				'elementor-dev-developer-edition-improve-field',
-				__( 'Usage Data Sharing', 'elementor-dev' ),
+				__( 'Usage Data Sharing', 'elementor-beta' ),
 				function () {
 					$this->load_view( 'settings-page-improve-elementor.php' );
 				},
@@ -87,8 +87,8 @@ class Settings_Page {
 	public function add_to_menus() {
 		add_submenu_page(
 			Settings::PAGE_ID,
-			__( 'Elementor Developer Edition', 'elementor-dev' ),
-			__( 'Developer Edition', 'elementor-dev' ),
+			__( 'Elementor Developer Edition', 'elementor-beta' ),
+			__( 'Developer Edition', 'elementor-beta' ),
 			'install_plugins',
 			static::PAGE_ID,
 			function () {
@@ -111,8 +111,8 @@ class Settings_Page {
 
 		return sprintf(
 			/* translators: %s: Link to issues report */
-			__( 'See something that isn’t working properly? %s', 'elementor-dev' ),
-			'<a href="https://github.com/elementor/elementor/issues" target="_blank">' . __( 'Let us know.', 'elementor-dev' ) . '</a>'
+			__( 'See something that isn’t working properly? %s', 'elementor-beta' ),
+			'<a href="https://github.com/elementor/elementor/issues" target="_blank">' . __( 'Let us know.', 'elementor-beta' ) . '</a>'
 		);
 	}
 
@@ -127,7 +127,7 @@ class Settings_Page {
 			'settings' => sprintf(
 				'<a href="%s">%s</a>',
 				esc_url( admin_url( 'admin.php?page=' . static::PAGE_ID ) ),
-				esc_html__( 'Settings', 'elementor-dev' )
+				esc_html__( 'Settings', 'elementor-beta' )
 			),
 		], $links );
 	}
@@ -219,7 +219,7 @@ class Settings_Page {
 			return;
 		}
 
-		$plugin_name = plugin_basename( ELEMENTOR_DEV_FILE );
+		$plugin_name = plugin_basename( ELEMENTOR_BETA_FILE );
 
 		add_action( 'admin_menu', [ $this, 'add_to_menus' ], 206 /* After elementor tools sub menu */ );
 		add_action( 'admin_init', [ $this, 'settings_init' ] );

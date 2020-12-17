@@ -80,6 +80,6 @@ class Modules_Manager {
 	 * @return string Modules namespace prefix.
 	 */
 	protected function get_modules_namespace_prefix() {
-		return ELEMENTOR_DEV_NAMESPACE;
+		return ELEMENTOR_BETA_NAMESPACE;
 	}
 }

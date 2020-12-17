@@ -21,7 +21,7 @@ class Bootstrap {
 	 * Plugins loaded.
 	 */
 	public function plugins_loaded() {
-		load_plugin_textdomain( 'elementor-dev' );
+		load_plugin_textdomain( 'elementor-beta' );
 
 		if ( ! $this->is_elementor_class_exists() ) {
 			add_action( 'admin_notices', [ $this, 'notice_elementor_class_not_exists' ] );

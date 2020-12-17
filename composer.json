@@ -1,5 +1,5 @@
 {
-    "name": "elementor/elementor-dev",
+    "name": "elementor/elementor-beta",
     "homepage": "https://elementor.com/",
     "type": "wordpress-plugin",
     "prefer-stable": true,

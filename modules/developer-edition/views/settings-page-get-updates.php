@@ -45,12 +45,12 @@ if (
 
 <p><?php
 	/* translators: %s: elementor version. */
-	echo sprintf( __( 'You are using Elementor %s', 'elementor-dev' ), '<strong>' . $elementor_version . '</strong>' );
+	echo sprintf( __( 'You are using Elementor %s', 'elementor-beta' ), '<strong>' . $elementor_version . '</strong>' );
 ?></p>
 
 <?php if ( $should_update_elementor ) : ?>
 	<p><?php
-		esc_html_e( 'You can update to the latest development builds automatically:', 'elementor-dev' );
+		esc_html_e( 'You can update to the latest development builds automatically:', 'elementor-beta' );
 	?></p>
 <?php endif; ?>
 
@@ -59,8 +59,8 @@ if (
 <strong>
 	<?php
 	$should_update_elementor
-		? esc_html_e( 'Updated version of Elementor is available.', 'elementor-dev' )
-		: esc_html_e( 'Hooray! You’re up to date with the latest versions of Elementor.', 'elementor-dev' );
+		? esc_html_e( 'Updated version of Elementor is available.', 'elementor-beta' )
+		: esc_html_e( 'Hooray! You’re up to date with the latest versions of Elementor.', 'elementor-beta' );
 	?>
 </strong>
 
@@ -69,15 +69,15 @@ if (
 <a
 	class="button <?php echo $should_update_elementor ? 'button-primary' : 'button-disabled'; ?>"
 	href="<?php echo $update_elementor_url; ?>"
-	data-loading-text="<?php esc_html_e( 'Updating...', 'elementor-dev' ); ?>"
+	data-loading-text="<?php esc_html_e( 'Updating...', 'elementor-beta' ); ?>"
 >
-	<?php esc_html_e( 'Update Now', 'elementor-dev' ); ?>
+	<?php esc_html_e( 'Update Now', 'elementor-beta' ); ?>
 </a>
 
 <br/><br/>
 
 <p>
-	<?php esc_html_e( 'If you need to re-install the latest stable version, you can do so here:', 'elementor-dev' ); ?>
+	<?php esc_html_e( 'If you need to re-install the latest stable version, you can do so here:', 'elementor-beta' ); ?>
 </p>
 
 <br/>
@@ -85,9 +85,9 @@ if (
 <a
 	class="button <?php echo $should_reinstall_elementor ? '' : 'button-disabled'; ?>"
 	href="<?php echo $reinstall_elementor_url; ?>"
-	data-loading-text="<?php esc_html_e( 'Re-installing...', 'elementor-dev' ); ?>"
+	data-loading-text="<?php esc_html_e( 'Re-installing...', 'elementor-beta' ); ?>"
 >
-	<?php esc_html_e( 'Re-install Now', 'elementor-dev' ); ?>
+	<?php esc_html_e( 'Re-install Now', 'elementor-beta' ); ?>
 </a>
 
 <br/><br/>
@@ -95,15 +95,15 @@ if (
 <p>
 	<?php
 	/* translators: %s: Plugin name. */
-	echo sprintf( __( '%s is a testing tool for new features and should not be used on live sites. Use staging environments only, and backup all your data before updating.', 'elementor-dev' ), __( 'Elementor Developer Edition', 'elementor-dev' ) );
+	echo sprintf( __( '%s is a testing tool for new features and should not be used on live sites. Use staging environments only, and backup all your data before updating.', 'elementor-beta' ), __( 'Elementor Developer Edition', 'elementor-beta' ) );
 	?>
 	<br/>
 	<?php
 	/* translators: %1$s: Learn more link, %2$s: Plugin name */
 	echo sprintf(
-		__( '%1$s about %2$s.', 'elementor-dev' ),
-		sprintf( '<a href="https://go.elementor.com/wp-dash-developer-edition" target="_blank">%s</a>', __( 'Learn more', 'elementor-dev' ) ),
-		__( 'Elementor Developer Edition', 'elementor-dev' )
+		__( '%1$s about %2$s.', 'elementor-beta' ),
+		sprintf( '<a href="https://go.elementor.com/wp-dash-developer-edition" target="_blank">%s</a>', __( 'Learn more', 'elementor-beta' ) ),
+		__( 'Elementor Developer Edition', 'elementor-beta' )
 	)
 	?>
 </p>
@@ -114,8 +114,8 @@ if (
 	<?php
 	echo sprintf(
 		/* translators: %s: email updates link */
-		__( '%s to join our first-to-know email updates.', 'elementor-dev' ),
-		sprintf( '<a href="#" id="beta-tester-first-to-know">%s</a>', __( 'Click here', 'elementor-dev' ) )
+		__( '%s to join our first-to-know email updates.', 'elementor-beta' ),
+		sprintf( '<a href="#" id="beta-tester-first-to-know">%s</a>', __( 'Click here', 'elementor-beta' ) )
 	)
 	?>
 </p>

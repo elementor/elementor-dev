@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			esc_html__(
 				/* translators: %s: Name of plugin */
 				'%s requires Elementor to be activate.',
-				'elementor-dev'
+				'elementor-beta'
 			),
-			'<strong>' . esc_html__( 'Elementor Developer Edition', 'elementor-dev' ) . '</strong>'
+			'<strong>' . esc_html__( 'Elementor Developer Edition', 'elementor-beta' ) . '</strong>'
 		);
 		?>
 	</p>
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<a href="<?php echo esc_url( $activate_url ); ?>" class="button button-primary">
-			<?php echo esc_html__( 'Activate', 'elementor-dev' ); ?>
+			<?php echo esc_html__( 'Activate', 'elementor-beta' ); ?>
 		</a>
 	</p>
 </div>

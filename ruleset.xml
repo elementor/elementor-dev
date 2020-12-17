@@ -4,7 +4,7 @@
 
 	<arg name="parallel" value="8" />
 
-	<config name="text_domain" value="elementor-dev" />
+	<config name="text_domain" value="elementor-beta" />
 
 	<exclude-pattern>vendor/</exclude-pattern>
 

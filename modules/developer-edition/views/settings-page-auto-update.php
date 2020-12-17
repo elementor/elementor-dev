@@ -21,9 +21,9 @@ if ( in_array( Bootstrap::ELEMENTOR_PLUGIN_NAME, $auto_updates, true ) ) {
 		value="yes"
 		<?php checked( $is_checked ); ?>
 	/>
-	<?php esc_html_e( 'Activate Auto Updates', 'elementor-dev' ); ?>
+	<?php esc_html_e( 'Activate Auto Updates', 'elementor-beta' ); ?>
 </label>
 <br/><br/>
 <p style="max-width: 900px;">
-	<?php esc_html_e( 'Activating auto updates will periodically update your Elementor plugin to the latest available release.', 'elementor-dev' ); ?>
+	<?php esc_html_e( 'Activating auto updates will periodically update your Elementor plugin to the latest available release.', 'elementor-beta' ); ?>
 </p>

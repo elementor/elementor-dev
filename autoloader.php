@@ -34,7 +34,7 @@ class Autoloader {
 	 * @param $relative_class_name
 	 */
 	private static function load_class( $relative_class_name ) {
-		$relative_class_name = str_replace( ELEMENTOR_DEV_NAMESPACE . '\\', '', $relative_class_name );
+		$relative_class_name = str_replace( ELEMENTOR_BETA_NAMESPACE . '\\', '', $relative_class_name );
 
 		$filename = strtolower(
 			preg_replace(
@@ -44,7 +44,7 @@ class Autoloader {
 			)
 		);
 
-		$filename = ELEMENTOR_DEV_DIR . $filename . '.php';
+		$filename = ELEMENTOR_BETA_DIR . $filename . '.php';
 
 		if ( is_readable( $filename ) ) {
 			require_once $filename;

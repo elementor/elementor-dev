@@ -35,7 +35,7 @@ class Admin_Bar {
 		// Always add "report an issue" link even at admin pages.
 		$wp_admin_bar->add_node( [
 			'id' => 'elementor_dev_secondary_report_issue',
-			'title' => __( 'Report an issue', 'elementor-dev' ),
+			'title' => __( 'Report an issue', 'elementor-beta' ),
 			'parent' => 'top-secondary',
 			'href' => self::REPORT_AN_ISSUE_URL,
 			'meta' => [
@@ -49,13 +49,13 @@ class Admin_Bar {
 
 		$wp_admin_bar->add_node( [
 			'id' => 'elementor_inspector',
-			'title' => __( 'Elementor Debugger', 'elementor-dev' ),
+			'title' => __( 'Elementor Debugger', 'elementor-beta' ),
 		] );
 
 		$wp_admin_bar->add_menu( [
 			'id' => 'elementor_inspector_elementor_dev',
 			'parent' => 'elementor_inspector',
-			'title' => __( 'Developer Edition', 'elementor-dev' ),
+			'title' => __( 'Developer Edition', 'elementor-beta' ),
 		] );
 
 		if ( current_user_can( 'manage_options' ) ) {
@@ -63,7 +63,7 @@ class Admin_Bar {
 				'id' => 'elementor_inspector_elementor_dev_system',
 				'parent' => 'elementor_inspector_elementor_dev',
 				'href' => self_admin_url( 'admin.php?page=elementor-system-info' ),
-				'title' => '<strong>' . __( 'System info', 'elementor-dev' ) . '</strong>',
+				'title' => '<strong>' . __( 'System info', 'elementor-beta' ) . '</strong>',
 				'meta' => [
 					'target' => '_blank',
 				],
@@ -74,7 +74,7 @@ class Admin_Bar {
 			'id' => 'elementor_inspector_elementor_dev_report',
 			'parent' => 'elementor_inspector_elementor_dev',
 			'href' => self::REPORT_AN_ISSUE_URL,
-			'title' => '<strong>' . __( 'Report an issue', 'elementor-dev' ) . '</strong>',
+			'title' => '<strong>' . __( 'Report an issue', 'elementor-beta' ) . '</strong>',
 			'meta' => [
 				'target' => '_blank',
 			],
@@ -93,7 +93,7 @@ class Admin_Bar {
 			$wp_admin_bar->add_menu( [
 				'id' => 'elementor_inspector_elementor_dev_elementor_ver',
 				'parent' => 'elementor_inspector_elementor_dev',
-				'title' => __( 'Elementor', 'elementor-dev' ) . ' v' . $elementor_version,
+				'title' => __( 'Elementor', 'elementor-beta' ) . ' v' . $elementor_version,
 			] );
 		}
 	}
@@ -106,7 +106,7 @@ class Admin_Bar {
 			return;
 		}
 
-		wp_register_style( 'elementor-dev-admin-bar-inline', false, [], ELEMENTOR_DEV_VERSION );
+		wp_register_style( 'elementor-dev-admin-bar-inline', false, [], ELEMENTOR_BETA_VERSION );
 		wp_enqueue_style( 'elementor-dev-admin-bar-inline' );
 
 		wp_add_inline_style('elementor-dev-admin-bar-inline', '

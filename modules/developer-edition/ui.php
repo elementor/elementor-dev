@@ -12,9 +12,9 @@ class UI {
 	public function enqueue_scripts() {
 		wp_enqueue_script(
 			'elementor-dev-developer-edition',
-			ELEMENTOR_DEV_URL . 'modules/developer-edition/assets/js/developer-edition.js',
+			ELEMENTOR_BETA_URL . 'modules/developer-edition/assets/js/developer-edition.js',
 			[],
-			ELEMENTOR_DEV_VERSION,
+			ELEMENTOR_BETA_VERSION,
 			true
 		);
 
@@ -34,9 +34,9 @@ class UI {
 	public function enqueue_styles() {
 		wp_enqueue_style(
 			'elementor-dev-developer-edition',
-			ELEMENTOR_DEV_URL . 'modules/developer-edition/assets/css/developer-edition.css',
+			ELEMENTOR_BETA_URL . 'modules/developer-edition/assets/css/developer-edition.css',
 			[],
-			ELEMENTOR_DEV_VERSION
+			ELEMENTOR_BETA_VERSION
 		);
 	}
 

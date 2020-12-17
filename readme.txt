@@ -1,5 +1,5 @@
 === Elementor Beta (Developer Edition) ===
-Contributors: elemntor, KingYes, ariel.k
+Contributors: elemntor, KingYes, ariel.k, nevog
 Tags: elementor, website builder, beta, developer, bleeding edge, testing, landing page, drag-and-drop, visual editor
 Requires at least: 5.0
 Tested up to: 5.6

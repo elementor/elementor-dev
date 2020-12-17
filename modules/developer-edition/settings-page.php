@@ -1,9 +1,9 @@
 <?php
-namespace ElementorDev\Modules\DeveloperEdition;
+namespace ElementorBeta\Modules\DeveloperEdition;
 
 use Elementor\Plugin;
 use Elementor\Settings;
-use ElementorDev\Bootstrap;
+use ElementorBeta\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -13,55 +13,55 @@ class Settings_Page {
 	/**
 	 * The page id
 	 */
-	const PAGE_ID = 'elementor_dev_settings';
+	const PAGE_ID = 'elementor_beta_settings';
 
 	/**
 	 * Init all the settings that should be saved
 	 */
 	public function settings_init() {
 		add_settings_section(
-			'elementor-dev-developer-edition-update',
+			'elementor-beta-developer-edition-update',
 			__( 'Elementor Developer Edition', 'elementor-beta' ),
 			null,
 			static::PAGE_ID
 		);
 
 		add_settings_field(
-			'elementor-dev-developer-edition-update-child',
+			'elementor-beta-developer-edition-update-child',
 			__( 'Get updates', 'elementor-beta' ),
 			function () {
 				$this->load_view( 'settings-page-get-updates.php' );
 			},
 			static::PAGE_ID,
-			'elementor-dev-developer-edition-update'
+			'elementor-beta-developer-edition-update'
 		);
 
 		if ( current_user_can( 'update_plugins' ) ) {
 			add_settings_section(
-				'elementor-dev-developer-edition-auto-update',
+				'elementor-beta-developer-edition-auto-update',
 				__( 'Auto Plugin Updates', 'elementor-beta' ),
 				null,
 				static::PAGE_ID
 			);
 
-			register_setting( Module::SETTINGS_KEY, 'elementor_dev_auto_update', [
+			register_setting( Module::SETTINGS_KEY, 'elementor_beta_auto_update', [
 				'sanitize_callback' => [ $this, 'sanitize_update_auto_update' ],
 			] );
 
 			add_settings_field(
-				'elementor-dev-developer-edition-auto-update-field',
+				'elementor-beta-developer-edition-auto-update-field',
 				__( 'Auto update Elementor', 'elementor-beta' ),
 				function () {
 					$this->load_view( 'settings-page-auto-update.php' );
 				},
 				static::PAGE_ID,
-				'elementor-dev-developer-edition-auto-update'
+				'elementor-beta-developer-edition-auto-update'
 			);
 		}
 
 		if ( 'yes' !== get_option( 'elementor_allow_tracking', 'no' ) ) {
 			add_settings_section(
-				'elementor-dev-developer-edition-improve',
+				'elementor-beta-developer-edition-improve',
 				__( 'Improve Elementor', 'elementor-beta' ),
 				null,
 				static::PAGE_ID
@@ -70,13 +70,13 @@ class Settings_Page {
 			register_setting( Module::SETTINGS_KEY, 'elementor_allow_tracking' );
 
 			add_settings_field(
-				'elementor-dev-developer-edition-improve-field',
+				'elementor-beta-developer-edition-improve-field',
 				__( 'Usage Data Sharing', 'elementor-beta' ),
 				function () {
 					$this->load_view( 'settings-page-improve-elementor.php' );
 				},
 				static::PAGE_ID,
-				'elementor-dev-developer-edition-improve'
+				'elementor-beta-developer-edition-improve'
 			);
 		}
 	}
@@ -146,7 +146,7 @@ class Settings_Page {
 	/**
 	 * Load the get updates modal into elementor templates.
 	 */
-	public function add_elementor_dev_modal_template() {
+	public function add_elementor_beta_modal_template() {
 		if ( ! $this->is_elementor_dev_settings_page() ) {
 			return;
 		}
@@ -224,7 +224,7 @@ class Settings_Page {
 		add_action( 'admin_menu', [ $this, 'add_to_menus' ], 206 /* After elementor tools sub menu */ );
 		add_action( 'admin_init', [ $this, 'settings_init' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		add_action( 'admin_head', [ $this, 'add_elementor_dev_modal_template' ] );
+		add_action( 'admin_head', [ $this, 'add_elementor_beta_modal_template' ] );
 		add_filter( 'admin_footer_text', [ $this, 'admin_footer_text' ] );
 		add_filter( "plugin_action_links_{$plugin_name}", [ $this, 'plugin_action_links' ] );
 	}

@@ -1,7 +1,7 @@
 <?php
-namespace ElementorDev\Modules\DeveloperEdition;
+namespace ElementorBeta\Modules\DeveloperEdition;
 
-use ElementorDev\Bootstrap;
+use ElementorBeta\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -34,7 +34,7 @@ class Admin_Bar {
 	public function add_menu_in_admin_bar( \WP_Admin_Bar $wp_admin_bar ) {
 		// Always add "report an issue" link even at admin pages.
 		$wp_admin_bar->add_node( [
-			'id' => 'elementor_dev_secondary_report_issue',
+			'id' => 'elementor_beta_secondary_report_issue',
 			'title' => __( 'Report an issue', 'elementor-beta' ),
 			'parent' => 'top-secondary',
 			'href' => self::REPORT_AN_ISSUE_URL,
@@ -53,15 +53,15 @@ class Admin_Bar {
 		] );
 
 		$wp_admin_bar->add_menu( [
-			'id' => 'elementor_inspector_elementor_dev',
+			'id' => 'elementor_inspector_elementor_beta',
 			'parent' => 'elementor_inspector',
 			'title' => __( 'Developer Edition', 'elementor-beta' ),
 		] );
 
 		if ( current_user_can( 'manage_options' ) ) {
 			$wp_admin_bar->add_menu( [
-				'id' => 'elementor_inspector_elementor_dev_system',
-				'parent' => 'elementor_inspector_elementor_dev',
+				'id' => 'elementor_inspector_elementor_beta_system',
+				'parent' => 'elementor_inspector_elementor_beta',
 				'href' => self_admin_url( 'admin.php?page=elementor-system-info' ),
 				'title' => '<strong>' . __( 'System info', 'elementor-beta' ) . '</strong>',
 				'meta' => [
@@ -71,8 +71,8 @@ class Admin_Bar {
 		}
 
 		$wp_admin_bar->add_menu( [
-			'id' => 'elementor_inspector_elementor_dev_report',
-			'parent' => 'elementor_inspector_elementor_dev',
+			'id' => 'elementor_inspector_elementor_beta_report',
+			'parent' => 'elementor_inspector_elementor_beta',
 			'href' => self::REPORT_AN_ISSUE_URL,
 			'title' => '<strong>' . __( 'Report an issue', 'elementor-beta' ) . '</strong>',
 			'meta' => [
@@ -91,8 +91,8 @@ class Admin_Bar {
 
 		if ( $elementor_version ) {
 			$wp_admin_bar->add_menu( [
-				'id' => 'elementor_inspector_elementor_dev_elementor_ver',
-				'parent' => 'elementor_inspector_elementor_dev',
+				'id' => 'elementor_inspector_elementor_beta_elementor_ver',
+				'parent' => 'elementor_inspector_elementor_beta',
 				'title' => __( 'Elementor', 'elementor-beta' ) . ' v' . $elementor_version,
 			] );
 		}
@@ -106,11 +106,11 @@ class Admin_Bar {
 			return;
 		}
 
-		wp_register_style( 'elementor-dev-admin-bar-inline', false, [], ELEMENTOR_BETA_VERSION );
-		wp_enqueue_style( 'elementor-dev-admin-bar-inline' );
+		wp_register_style( 'elementor-beta-admin-bar-inline', false, [], ELEMENTOR_BETA_VERSION );
+		wp_enqueue_style( 'elementor-beta-admin-bar-inline' );
 
-		wp_add_inline_style('elementor-dev-admin-bar-inline', '
-			#wpadminbar #wp-admin-bar-elementor_dev_secondary_report_issue > .ab-item::before {
+		wp_add_inline_style('elementor-beta-admin-bar-inline', '
+			#wpadminbar #wp-admin-bar-elementor_beta_secondary_report_issue > .ab-item::before {
 			    content: "\e813";
 			    font-family: eicons;
 			    top: 3px;

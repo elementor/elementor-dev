@@ -1,8 +1,8 @@
 <?php
 
-use ElementorDev\Bootstrap;
+use ElementorBeta\Bootstrap;
 use Elementor\Beta_Testers;
-use ElementorDev\Core\Plugin;
+use ElementorBeta\Core\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

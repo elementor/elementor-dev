@@ -1,8 +1,8 @@
 <?php
-namespace ElementorDev\Tests;
+namespace ElementorBeta\Tests;
 
-use ElementorDev\Core\Plugin;
-use ElementorDev\Tests\Phpunit\Base_Test;
+use ElementorBeta\Core\Plugin;
+use ElementorBeta\Tests\Phpunit\Base_Test;
 
 class Test_Plugin extends Base_Test {
 	public function test_plugin_activated() {

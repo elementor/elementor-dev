@@ -1,8 +1,8 @@
 document.addEventListener( 'DOMContentLoaded', () => {
-	document.body.classList.add( 'elementor-dev' );
+	document.body.classList.add( 'elementor-beta' );
 
-	if ( elementorDevUiTheme ) {
-		document.body.classList.add( `elementor-dev-theme-${ elementorDevUiTheme }` )
+	if ( elementorBetaUiTheme ) {
+		document.body.classList.add( `elementor-beta-theme-${ elementorBetaUiTheme }` )
 	}
 
 	const routeCommandsToShowDevBadge = [
@@ -14,6 +14,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	$e.routes.on( 'run:after', () => {
 		document.getElementById( 'elementor-panel-header-title' )
 			.classList
-			.toggle( 'elementor-dev-badge', routeCommandsToShowDevBadge.includes( $e.routes.current.panel ) )
+			.toggle( 'elementor-beta-badge', routeCommandsToShowDevBadge.includes( $e.routes.current.panel ) )
 	} );
 } );

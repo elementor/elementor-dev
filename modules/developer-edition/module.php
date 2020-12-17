@@ -1,14 +1,14 @@
 <?php
-namespace ElementorDev\Modules\DeveloperEdition;
+namespace ElementorBeta\Modules\DeveloperEdition;
 
-use \ElementorDev\Core\Base\Module as BaseModule;
+use \ElementorBeta\Core\Base\Module as BaseModule;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
 class Module extends BaseModule {
-	const SETTINGS_KEY = 'elementor_dev_developer_edition';
+	const SETTINGS_KEY = 'elementor_beta_developer_edition';
 
 	/**
 	 * @var Version_Control

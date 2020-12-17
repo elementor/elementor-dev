@@ -1,5 +1,5 @@
 <?php
-namespace ElementorDev\Tests\Phpunit;
+namespace ElementorBeta\Tests\Phpunit;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

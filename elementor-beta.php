@@ -11,10 +11,10 @@
  * @package elementor-beta
  */
 
-use ElementorDev\Bootstrap;
-use ElementorDev\Autoloader;
-use ElementorDev\Modules\DeveloperEdition\Admin_Bar;
-use ElementorDev\Modules\DeveloperEdition\Version_Control;
+use ElementorBeta\Bootstrap;
+use ElementorBeta\Autoloader;
+use ElementorBeta\Modules\DeveloperEdition\Admin_Bar;
+use ElementorBeta\Modules\DeveloperEdition\Version_Control;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -37,7 +37,7 @@ if ( ! defined( 'ELEMENTOR_BETA_URL' ) ) {
 }
 
 if ( ! defined( 'ELEMENTOR_BETA_NAMESPACE' ) ) {
-	define( 'ELEMENTOR_BETA_NAMESPACE', 'ElementorDev' );
+	define( 'ELEMENTOR_BETA_NAMESPACE', 'ElementorBeta' );
 }
 
 if ( ! defined( 'ELEMENTOR_BETA_VERSION' ) ) {

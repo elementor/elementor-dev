@@ -1,8 +1,8 @@
 <?php
-namespace ElementorDev\Tests;
+namespace ElementorBeta\Tests;
 
-use ElementorDev\Tests\Phpunit\Base_Test;
-use ElementorDev\Modules\DeveloperEdition\Admin_Bar;
+use ElementorBeta\Tests\Phpunit\Base_Test;
+use ElementorBeta\Modules\DeveloperEdition\Admin_Bar;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -35,24 +35,24 @@ class Test_Admin_Bar extends Base_Test {
 				'parent' => false,
 			],
 			[
-				'id' => 'elementor_dev_secondary_report_issue',
+				'id' => 'elementor_beta_secondary_report_issue',
 				'parent' => 'top-secondary',
 			],
 			[
-				'id' => 'elementor_inspector_elementor_dev',
+				'id' => 'elementor_inspector_elementor_beta',
 				'parent' => 'elementor_inspector',
 			],
 			[
-				'id' => 'elementor_inspector_elementor_dev_system',
-				'parent' => 'elementor_inspector_elementor_dev',
+				'id' => 'elementor_inspector_elementor_beta_system',
+				'parent' => 'elementor_inspector_elementor_beta',
 			],
 			[
-				'id' => 'elementor_inspector_elementor_dev_report',
-				'parent' => 'elementor_inspector_elementor_dev',
+				'id' => 'elementor_inspector_elementor_beta_report',
+				'parent' => 'elementor_inspector_elementor_beta',
 			],
 			[
-				'id' => 'elementor_inspector_elementor_dev_elementor_ver',
-				'parent' => 'elementor_inspector_elementor_dev',
+				'id' => 'elementor_inspector_elementor_beta_elementor_ver',
+				'parent' => 'elementor_inspector_elementor_beta',
 			],
 		];
 
@@ -84,7 +84,7 @@ class Test_Admin_Bar extends Base_Test {
 
 		$this->assertTrue( is_array( $admin_bar_items ) );
 
-		$this->assertArrayNotHasKey( 'elementor_inspector_elementor_dev_system', $admin_bar_items );
+		$this->assertArrayNotHasKey( 'elementor_inspector_elementor_beta_system', $admin_bar_items );
 	}
 
 	public function test_print_style() {
@@ -101,7 +101,7 @@ class Test_Admin_Bar extends Base_Test {
 		do_action( 'wp_enqueue_scripts' );
 
 		// Assert
-		$this->assertTrue( in_array( 'elementor-dev-admin-bar-inline', $wp_styles->queue, true ) );
+		$this->assertTrue( in_array( 'elementor-beta-admin-bar-inline', $wp_styles->queue, true ) );
 	}
 
 	public function test_print_style__should_not_print_style_when_admin_bar_is_not_shown() {
@@ -118,6 +118,6 @@ class Test_Admin_Bar extends Base_Test {
 		do_action( 'wp_enqueue_scripts' );
 
 		// Assert
-		$this->assertFalse( in_array( 'elementor-dev-admin-bar-inline', $wp_styles->queue, true ) );
+		$this->assertFalse( in_array( 'elementor-beta-admin-bar-inline', $wp_styles->queue, true ) );
 	}
 }

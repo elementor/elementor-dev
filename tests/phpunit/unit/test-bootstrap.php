@@ -1,8 +1,8 @@
 <?php
-namespace ElementorDev\Tests;
+namespace ElementorBeta\Tests;
 
-use ElementorDev\Bootstrap;
-use ElementorDev\Tests\Phpunit\Base_Test;
+use ElementorBeta\Bootstrap;
+use ElementorBeta\Tests\Phpunit\Base_Test;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

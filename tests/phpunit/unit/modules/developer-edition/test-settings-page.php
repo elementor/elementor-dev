@@ -1,9 +1,9 @@
 <?php
-namespace ElementorDev\Tests;
+namespace ElementorBeta\Tests;
 
-use ElementorDev\Bootstrap;
-use ElementorDev\Tests\Phpunit\Base_Test;
-use ElementorDev\Modules\DeveloperEdition\Settings_Page;
+use ElementorBeta\Bootstrap;
+use ElementorBeta\Tests\Phpunit\Base_Test;
+use ElementorBeta\Modules\DeveloperEdition\Settings_Page;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

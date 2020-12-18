@@ -7,11 +7,11 @@
 		convertWarningsToExceptions="true"
 >
 	<php>
-		<env name="PLUGIN_FILE" value="elementor-dev.php"/>
+		<env name="PLUGIN_FILE" value="elementor-beta.php"/>
 	</php>
 
 	<testsuites>
-		<testsuite name="elementor-dev">
+		<testsuite name="elementor-beta">
 			<directory prefix="test-" suffix=".php">./tests/phpunit/</directory>
 		</testsuite>
 	</testsuites>

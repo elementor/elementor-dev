@@ -2,9 +2,9 @@
 /**
  * Inspired by: Woocommerce Beta Tester (https://github.com/woocommerce/woocommerce-beta-tester).
  */
-namespace ElementorDev\Modules\DeveloperEdition;
+namespace ElementorBeta\Modules\DeveloperEdition;
 
-use ElementorDev\Bootstrap;
+use ElementorBeta\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -34,7 +34,7 @@ class Version_Control {
 		static $key;
 
 		if ( ! $key ) {
-			$key = md5( 'elementor_dev_wp_org_data' );
+			$key = md5( 'elementor_beta_wp_org_data' );
 		}
 
 		return $key;

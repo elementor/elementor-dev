@@ -1,7 +1,7 @@
 <?php
 
-use ElementorDev\Modules\DeveloperEdition\Module;
-use ElementorDev\Modules\DeveloperEdition\Settings_Page;
+use ElementorBeta\Modules\DeveloperEdition\Module;
+use ElementorBeta\Modules\DeveloperEdition\Settings_Page;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

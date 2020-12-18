@@ -1,5 +1,5 @@
 <?php
-namespace ElementorDev\Modules\DeveloperEdition;
+namespace ElementorBeta\Modules\DeveloperEdition;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -11,7 +11,7 @@ class UI {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script(
-			'elementor-dev-developer-edition',
+			'elementor-beta-developer-edition',
 			ELEMENTOR_BETA_URL . 'modules/developer-edition/assets/js/developer-edition.js',
 			[],
 			ELEMENTOR_BETA_VERSION,
@@ -25,7 +25,7 @@ class UI {
 			$ui_theme = $elementor_preferences['ui_theme'];
 		}
 
-		wp_add_inline_script( 'elementor-dev-developer-edition', "const elementorDevUiTheme = '{$ui_theme}';" );
+		wp_add_inline_script( 'elementor-beta-developer-edition', "const elementorBetaUiTheme = '{$ui_theme}';" );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class UI {
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style(
-			'elementor-dev-developer-edition',
+			'elementor-beta-developer-edition',
 			ELEMENTOR_BETA_URL . 'modules/developer-edition/assets/css/developer-edition.css',
 			[],
 			ELEMENTOR_BETA_VERSION
@@ -48,7 +48,7 @@ class UI {
 	 * @return array
 	 */
 	public function add_body_class( array $classes ) {
-		$classes[] = 'elementor-dev';
+		$classes[] = 'elementor-beta';
 
 		return $classes;
 	}
@@ -61,7 +61,7 @@ class UI {
 	 * @return string
 	 */
 	public function add_admin_body_class( $classes ) {
-		return $classes . ' elementor-dev';
+		return $classes . ' elementor-beta';
 	}
 
 	/**

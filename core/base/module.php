@@ -1,5 +1,5 @@
 <?php
-namespace ElementorDev\Core\Base;
+namespace ElementorBeta\Core\Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

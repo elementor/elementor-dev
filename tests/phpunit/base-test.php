@@ -1,5 +1,5 @@
 <?php
-namespace ElementorDev\Tests\Phpunit;
+namespace ElementorBeta\Tests\Phpunit;
 
 use WP_UnitTestCase;
 

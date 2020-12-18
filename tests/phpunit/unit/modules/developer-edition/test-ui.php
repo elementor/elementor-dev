@@ -1,8 +1,8 @@
 <?php
-namespace ElementorDev\Tests;
+namespace ElementorBeta\Tests;
 
-use ElementorDev\Tests\Phpunit\Base_Test;
-use ElementorDev\Modules\DeveloperEdition\UI;
+use ElementorBeta\Tests\Phpunit\Base_Test;
+use ElementorBeta\Modules\DeveloperEdition\UI;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -20,8 +20,8 @@ class Test_UI extends Base_Test {
 		do_action( 'elementor/editor/after_enqueue_scripts' );
 
 		// Assert
-		$this->assertTrue( in_array( 'elementor-dev-developer-edition', $wp_styles->queue, true ) );
-		$this->assertTrue( in_array( 'elementor-dev-developer-edition', $wp_scripts->queue, true ) );
+		$this->assertTrue( in_array( 'elementor-beta-developer-edition', $wp_styles->queue, true ) );
+		$this->assertTrue( in_array( 'elementor-beta-developer-edition', $wp_scripts->queue, true ) );
 	}
 
 	public function test_enqueue_styles__should_enqueue_styles_on_admin() {
@@ -34,7 +34,7 @@ class Test_UI extends Base_Test {
 		do_action( 'admin_enqueue_scripts' );
 
 		// Assert
-		$this->assertTrue( in_array( 'elementor-dev-developer-edition', $wp_styles->queue, true ) );
+		$this->assertTrue( in_array( 'elementor-beta-developer-edition', $wp_styles->queue, true ) );
 	}
 
 	public function test_add_body_class() {
@@ -45,7 +45,7 @@ class Test_UI extends Base_Test {
 		$body_classes = apply_filters( 'body_class', [] );
 
 		// Assert
-		$this->assertTrue( in_array( 'elementor-dev', $body_classes, true ) );
+		$this->assertTrue( in_array( 'elementor-beta', $body_classes, true ) );
 	}
 
 	public function test_add_admin_body_class() {
@@ -58,6 +58,6 @@ class Test_UI extends Base_Test {
 		// Assert
 		$admin_body_classes = explode( ' ', $admin_body_classes );
 
-		$this->assertTrue( in_array( 'elementor-dev', $admin_body_classes, true ) );
+		$this->assertTrue( in_array( 'elementor-beta', $admin_body_classes, true ) );
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-use ElementorDev\Bootstrap;
+use ElementorBeta\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

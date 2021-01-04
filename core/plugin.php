@@ -39,7 +39,7 @@ class Plugin {
 	public function __construct() {
 		$this->modules_manager = new Modules_Manager();
 
-		add_action( 'init', [ $this, 'init' ] );
+		add_action( 'init', [ $this, 'init' ], -1 /* Should run BEFORE Elementor */ );
 	}
 
 	/**

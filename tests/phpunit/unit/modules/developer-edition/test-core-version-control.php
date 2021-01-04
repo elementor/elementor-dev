@@ -3,21 +3,21 @@ namespace ElementorBeta\Tests;
 
 use ElementorBeta\Bootstrap;
 use ElementorBeta\Tests\Phpunit\Base_Test;
-use ElementorBeta\Modules\DeveloperEdition\Version_Control;
+use ElementorBeta\Modules\DeveloperEdition\Core_Version_Control;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class Test_Version_Control extends Base_Test {
+class Test_Core_Version_Control extends Base_Test {
 	/**
-	 * @var Version_Control
+	 * @var Core_Version_Control
 	 */
 	protected $version_control;
 
 	public function setUp() {
-		$this->version_control = $this->getMockBuilder( Version_Control::class )
-			->setMethods( [ 'get_elementor_plugin_data' ] )
+		$this->version_control = $this->getMockBuilder( Core_Version_Control::class )
+			->setMethods( [ 'get_current_version' ] )
 			->getMock();
 
 		$versions = [
@@ -30,7 +30,7 @@ class Test_Version_Control extends Base_Test {
 		];
 
 		set_site_transient(
-			Version_Control::get_wp_org_data_transient_key(),
+			Core_Version_Control::get_wp_org_data_transient_key(),
 			array_reduce(
 				$versions,
 				function ( $current, $value ) {
@@ -44,7 +44,7 @@ class Test_Version_Control extends Base_Test {
 	/** @dataProvider version_that_should_have_updates_data_provider */
 	public function test_pre_set_site_transient_update_plugins__should_return_updates( $version, $expected_version, $description ) {
 		// Arrange
-		$this->version_control->method( 'get_elementor_plugin_data' )->willReturn( [ 'Version' => $version ] );
+		$this->version_control->method( 'get_current_version' )->willReturn( $version );
 
 		// Act
 		$result = $this->version_control->pre_set_site_transient_update_plugins( (object) [ 'response' => [] ] );
@@ -70,7 +70,7 @@ class Test_Version_Control extends Base_Test {
 	/** @dataProvider version_that_should_not_have_updates_data_provider */
 	public function test_pre_set_site_transient_update_plugins__should_not_return_updates( $version, $description ) {
 		// Arrange
-		$this->version_control->method( 'get_elementor_plugin_data' )->willReturn( [ 'Version' => $version ] );
+		$this->version_control->method( 'get_current_version' )->willReturn( $version );
 
 		// Act
 		$result = $this->version_control->pre_set_site_transient_update_plugins( (object) [ 'response' => [] ] );
@@ -96,7 +96,7 @@ class Test_Version_Control extends Base_Test {
 
 	/** @dataProvider is_valid_rollback_version_data_provider */
 	public function test_is_valid_rollback_version( $version, $expect_valid ) {
-		$result = $this->version_control->is_valid_rollback_version( false, $version );
+		$result = apply_filters( 'elementor/settings/tools/rollback/is_valid_rollback_version', false, $version );
 
 		$this->assertEquals( $expect_valid, $result );
 	}

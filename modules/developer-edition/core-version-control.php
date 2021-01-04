@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class Version_Control {
+class Core_Version_Control extends Base_Version_Control {
 
 	/**
 	 * WordPress info url for the elementor plugin.
@@ -22,7 +22,9 @@ class Version_Control {
 	 */
 	public function __construct() {
 		add_filter( 'pre_set_site_transient_update_plugins', [ $this, 'pre_set_site_transient_update_plugins' ], 11 /* After Elementor beta */ );
-		add_filter( 'elementor/settings/tools/rollback/is_valid_rollback_version', [ $this, 'is_valid_rollback_version' ], 10, 2 );
+		add_filter( 'elementor/settings/tools/rollback/is_valid_rollback_version', function ( $is_valid, $version ) {
+			return $this->is_valid_rollback_version( $is_valid, $version );
+		}, 10, 2 );
 	}
 
 	/**
@@ -41,19 +43,6 @@ class Version_Control {
 	}
 
 	/**
-	 * Will be execute when the plugin is on activate or deactivate mode.
-	 */
-	public static function on_activate_and_deactivate_plugin() {
-		// Force recheck for new plugin versions
-		delete_site_transient( 'update_plugins' );
-
-		if ( defined( 'ELEMENTOR_VERSION' ) ) {
-			// Force recalculate rollback versions in elementor.
-			delete_transient( 'elementor_rollback_versions_' . ELEMENTOR_VERSION );
-		}
-	}
-
-	/**
 	 * Checks if the elementor should updated or not based on the latest dev tag release.
 	 *
 	 * @param $transient
@@ -64,7 +53,7 @@ class Version_Control {
 		// Make sure that "elementor beta - developer edition" is the only channel for version updates.
 		unset( $transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ] );
 
-		$current_version = $this->get_elementor_plugin_data()['Version'];
+		$current_version = $this->get_current_version();
 		$latest_dev_release = $this->get_latest_dev_release();
 
 		if ( ! $latest_dev_release ) {
@@ -77,36 +66,18 @@ class Version_Control {
 			return $transient;
 		}
 
-		// Populate response data.
-		if ( ! isset( $transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ] ) ) {
-			$transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ] = (object) [
-				'plugin' => Bootstrap::ELEMENTOR_PLUGIN_NAME,
-				'slug' => basename( Bootstrap::ELEMENTOR_PLUGIN_NAME, '.php' ),
-				'url' => 'https://elementor.com/',
-			];
-		}
-
 		$download_url = $this->get_download_url( $latest_dev_release );
 
-		$transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ]->new_version = $latest_dev_release;
-		$transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ]->zip_url = $download_url;
-		$transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ]->package = $download_url;
+		$transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ] = (object) [
+			'plugin' => Bootstrap::ELEMENTOR_PLUGIN_NAME,
+			'slug' => basename( Bootstrap::ELEMENTOR_PLUGIN_NAME, '.php' ),
+			'url' => 'https://elementor.com/',
+			'new_version' => $latest_dev_release,
+			'zip_url' => $download_url,
+			'package' => $download_url,
+		];
 
 		return $transient;
-	}
-
-	/**
-	 * Return true if the version is stable or with the same channel
-	 *
-	 * Examples for valid version: 1.0.0, 1.0.0-dev1, 1.0.0.1, 1.0.0.1-dev2
-	 *
-	 * @param $is_valid
-	 * @param $version
-	 *
-	 * @return bool
-	 */
-	public function is_valid_rollback_version( $is_valid, $version ) {
-		return (bool) preg_match( '/^\d+(\.\d+){2,3}(-dev\d*)?$/', $version );
 	}
 
 	/**
@@ -125,6 +96,17 @@ class Version_Control {
 	 */
 	public function get_latest_stable_release() {
 		return $this->get_latest_release_by_channel( 'stable' );
+	}
+
+	/**
+	 * @return array
+	 */
+	protected function get_plugin_config() {
+		return [
+			'plugin_name' => Bootstrap::ELEMENTOR_PLUGIN_NAME,
+			'version_const' => 'ELEMENTOR_VERSION',
+			'is_active' => true,
+		];
 	}
 
 	/**
@@ -213,14 +195,5 @@ class Version_Control {
 		}
 
 		return $data[ $version ];
-	}
-
-	/**
-	 * Get Plugin data.
-	 *
-	 * @return array
-	 */
-	protected function get_elementor_plugin_data() {
-		return get_plugin_data( WP_PLUGIN_DIR . '/' . Bootstrap::ELEMENTOR_PLUGIN_NAME );
 	}
 }

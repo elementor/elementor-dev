@@ -1,10 +1,21 @@
 <?php
 
+use Elementor\Beta_Testers;
 use ElementorBeta\Modules\DeveloperEdition\Module;
 use ElementorBeta\Modules\DeveloperEdition\Settings_Page;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+$should_open_popup = false;
+$all_introductions = get_user_meta( get_current_user_id(), 'elementor_introduction', true );
+
+if (
+	! is_array( $all_introductions ) ||
+	! array_key_exists( Beta_Testers::BETA_TESTER_SIGNUP, $all_introductions )
+) {
+	$should_open_popup = true;
 }
 ?>
 
@@ -25,4 +36,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</form>
 	</div>
+
+<?php if ( $should_open_popup ) : ?>
+	<script>
+		document.addEventListener( 'DOMContentLoaded', () => {
+			if ( ! window.elementorBetaTester ) {
+				return;
+			}
+
+			window.elementorBetaTester.showLayout( true )
+		} );
+	</script>
+<?php endif; ?>
+
+	<script>
+		document.querySelectorAll( 'a[data-loading-text]' ).forEach( ( el ) => {
+			el.addEventListener( 'click', ( e ) => {
+				if ( e.target.classList.contains( 'button-disabled' ) ) {
+					e.preventDefault();
+
+					return;
+				}
+
+				e.target.classList.add( 'button-disabled' );
+				e.target.innerHTML = e.target.dataset.loadingText;
+			} )
+		} );
+	</script>
 <?php

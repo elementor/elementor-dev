@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Bootstrap {
 	const ELEMENTOR_PLUGIN_NAME = 'elementor/elementor.php';
+	const ELEMENTOR_PRO_PLUGIN_NAME = 'elementor-pro/elementor-pro.php';
 
 	/**
 	 * Bootstrap constructor.

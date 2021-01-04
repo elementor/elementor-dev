@@ -21,7 +21,7 @@ class Version_Control {
 	 * Version_Control constructor.
 	 */
 	public function __construct() {
-		add_filter( 'pre_set_site_transient_update_plugins', [ $this, 'pre_set_site_transient_update_plugins' ] );
+		add_filter( 'pre_set_site_transient_update_plugins', [ $this, 'pre_set_site_transient_update_plugins' ], 11 /* After Elementor beta */ );
 		add_filter( 'elementor/settings/tools/rollback/is_valid_rollback_version', [ $this, 'is_valid_rollback_version' ], 10, 2 );
 	}
 
@@ -61,6 +61,9 @@ class Version_Control {
 	 * @return object
 	 */
 	public function pre_set_site_transient_update_plugins( $transient ) {
+		// Make sure that "elementor beta - developer edition" is the only channel for version updates.
+		unset( $transient->response[ Bootstrap::ELEMENTOR_PLUGIN_NAME ] );
+
 		$current_version = $this->get_elementor_plugin_data()['Version'];
 		$latest_dev_release = $this->get_latest_dev_release();
 

@@ -13,8 +13,8 @@
 
 use ElementorBeta\Bootstrap;
 use ElementorBeta\Autoloader;
+use ElementorBeta\Modules\DeveloperEdition\Module;
 use ElementorBeta\Modules\DeveloperEdition\Admin_Bar;
-use ElementorBeta\Modules\DeveloperEdition\Version_Control;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -48,7 +48,7 @@ if ( ! defined( 'ELEMENTOR_BETA_VERSION' ) ) {
 require_once __DIR__ . '/autoloader.php';
 Autoloader::run();
 
-$activate_and_deactivate_action = [ Version_Control::class, 'on_activate_and_deactivate_plugin' ];
+$activate_and_deactivate_action = [ Module::class, 'on_activate_and_deactivate_plugin' ];
 
 register_activation_hook( __FILE__, $activate_and_deactivate_action );
 register_activation_hook( __FILE__, [ Admin_Bar::class, 'enable_elementor_inspector' ] );

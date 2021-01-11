@@ -36,6 +36,39 @@ class Settings_Page {
 			'elementor-beta-developer-edition-update'
 		);
 
+		add_settings_field(
+			'elementor-beta-developer-edition-update-child-core',
+			__( 'Elementor', 'elementor-beta' ),
+			function () {
+				$this->load_view( 'settings-page-get-updates-core.php' );
+			},
+			static::PAGE_ID,
+			'elementor-beta-developer-edition-update'
+		);
+
+		if ( is_plugin_active( Bootstrap::ELEMENTOR_PRO_PLUGIN_NAME ) ) {
+			add_settings_field(
+				'elementor-beta-developer-edition-update-child-pro',
+				__( 'Elementor Pro', 'elementor-beta' ),
+				function () {
+					$this->load_view( 'settings-page-get-updates-pro.php' );
+				},
+				static::PAGE_ID,
+				'elementor-beta-developer-edition-update'
+			);
+		}
+
+
+		add_settings_field(
+			'elementor-beta-developer-edition-update-child-description',
+			'',
+			function () {
+				$this->load_view( 'settings-page-get-updates-description.php' );
+			},
+			static::PAGE_ID,
+			'elementor-beta-developer-edition-update'
+		);
+
 		if ( current_user_can( 'update_plugins' ) ) {
 			add_settings_section(
 				'elementor-beta-developer-edition-auto-update',
@@ -225,7 +258,7 @@ class Settings_Page {
 		add_action( 'admin_init', [ $this, 'settings_init' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_action( 'admin_head', [ $this, 'add_elementor_beta_modal_template' ] );
-		add_filter( 'admin_footer_text', [ $this, 'admin_footer_text' ] );
+		add_filter( 'admin_footer_text', [ $this, 'admin_footer_text' ], 11 /* After elementor */ );
 		add_filter( "plugin_action_links_{$plugin_name}", [ $this, 'plugin_action_links' ] );
 	}
 }

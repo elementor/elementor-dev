@@ -1,7 +1,7 @@
 <?php
 namespace ElementorBeta\Modules\DeveloperEdition;
 
-use ElementorBeta\Bootstrap;
+use ElementorBeta\Core\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -80,20 +80,27 @@ class Admin_Bar {
 			],
 		] );
 
-		$elementor_version = null;
-		$elementor_path = plugin_dir_path( Bootstrap::ELEMENTOR_PLUGIN_NAME );
+		/** @var Module $module */
+		$module = Plugin::instance()
+			->modules_manager
+			->get_modules( 'developer-edition' );
 
-		if ( defined( 'ELEMENTOR_VERSION' ) ) {
-			$elementor_version = ELEMENTOR_VERSION;
-		} elseif ( is_readable( $elementor_path ) ) {
-			$elementor_version = get_file_data( $elementor_path, [ 'Version' => 'Version' ], false )['Version'];
-		}
+		$elementor_version = $module->core_version_control->get_current_version();
+		$elementor_pro_version = $module->pro_version_control->get_current_version();
 
 		if ( $elementor_version ) {
 			$wp_admin_bar->add_menu( [
 				'id' => 'elementor_inspector_elementor_beta_elementor_ver',
 				'parent' => 'elementor_inspector_elementor_beta',
 				'title' => __( 'Elementor', 'elementor-beta' ) . ' v' . $elementor_version,
+			] );
+		}
+
+		if ( $elementor_pro_version ) {
+			$wp_admin_bar->add_menu( [
+				'id' => 'elementor_inspector_elementor_beta_elementor_pro_ver',
+				'parent' => 'elementor_inspector_elementor_beta',
+				'title' => __( 'Elementor Pro', 'elementor-beta' ) . ' v' . $elementor_pro_version,
 			] );
 		}
 	}

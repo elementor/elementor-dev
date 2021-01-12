@@ -21,7 +21,15 @@ class Core_Version_Control extends Base_Version_Control {
 	 * Version_Control constructor.
 	 */
 	public function __construct() {
-		add_filter( 'pre_set_site_transient_update_plugins', [ $this, 'pre_set_site_transient_update_plugins' ], 11 /* After Elementor beta */ );
+		// If the user tries to rollback, it should not take over on the version update mechanism.
+		if ( ! isset( $_GET['action'] ) || 'elementor_rollback' !== $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification -- nonce check is not required here.
+			add_filter(
+				'pre_set_site_transient_update_plugins',
+				[ $this, 'pre_set_site_transient_update_plugins' ],
+				11 /* After Elementor beta */
+			);
+		}
+
 		add_filter( 'elementor/settings/tools/rollback/is_valid_rollback_version', function ( $is_valid, $version ) {
 			return $this->is_valid_rollback_version( $is_valid, $version );
 		}, 10, 2 );

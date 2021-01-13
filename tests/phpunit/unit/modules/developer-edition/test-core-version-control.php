@@ -120,4 +120,22 @@ class Test_Core_Version_Control extends Base_Test {
 			[ '3.1.0-rc3', false ],
 		];
 	}
+
+	public function test_pre_set_site_transient_update_plugins__should_register_filter() {
+		$version_control = new Core_Version_Control();
+
+		$this->assertTrue(
+			has_filter( 'pre_set_site_transient_update_plugins', [ $version_control, 'pre_set_site_transient_update_plugins' ] ) !== false
+		);
+	}
+
+	public function test_pre_set_site_transient_update_plugins__should_not_register_filter_if_in_elementor_rollback() {
+		$_GET['action'] = 'elementor_rollback';
+
+		$version_control = new Core_Version_Control();
+
+		$this->assertFalse(
+			has_filter( 'pre_set_site_transient_update_plugins', [ $version_control, 'pre_set_site_transient_update_plugins' ] )
+		);
+	}
 }

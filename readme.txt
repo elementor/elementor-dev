@@ -4,7 +4,7 @@ Tags: elementor, website builder, beta, developer, bleeding edge, testing, landi
 Requires at least: 5.0
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,6 +75,9 @@ The features that roll out to stable versions will do so gradually. This means n
 Beta versions are the designated version for release. Developer Edition versions will include extra features for testing purposes and will be rolled out gradually.
 
 == Changelog ==
+
+= 1.1.1 - 2021-01-13 =
+* Fix: Wrong version detection when trying to rollback Elementor version
 
 = 1.1.0 - 2021-01-12 =
 * Tweak: Added support for Elementor Pro v3.1.0

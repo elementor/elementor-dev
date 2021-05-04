@@ -16,4 +16,4 @@ For the Elementor pro updates, the class `Pro_Version_Control` interrupts the HT
 
 The main difference between the 2 approaches is that in the Core version of Elementor the logic of which is the right version for the update determined in the plugin itself, while in the Pro version of Elementor, the remote server has the responsibility to deliver the right version.
 
-Elementor Beta (Developer Edition) also adds for some UI changes which makes the plugin look a bit different from the stable version of Elementor.
+Elementor Beta (Developer Edition) also adds some UI changes which makes the plugin look a bit different from the stable version of Elementor.

@@ -126,7 +126,8 @@ class Settings_Page {
 			static::PAGE_ID,
 			function () {
 				$this->settings_page_html();
-			}
+			},
+			11 // After Elementor's sub menus - before Elementor's Upgrage sub menu item
 		);
 	}
 

@@ -19,7 +19,7 @@ html[dir="rtl"] .elementor-beta #toplevel_page_elementor .wp-menu-name::after {
 
 .elementor-beta .elementor-panel #elementor-panel-header-title.elementor-beta-badge::after {
 	top: -3px;
-	color: #495157;
+	color: #0C0D0E;
 	background-color: #fff;
 }
 
@@ -52,20 +52,8 @@ html[dir="rtl"] .elementor-beta #toplevel_page_elementor .wp-menu-name::after {
 	border-bottom: 3px solid #23282d;
 }
 
-.elementor-beta.elementor-beta-theme-dark .elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
-	border-bottom: 3px solid #fff;
-}
-
 .elementor-beta .elementor-panel #elementor-panel-header {
-	background-color: #495157;
-}
-
-.elementor-beta.elementor-beta-theme-dark .elementor-panel #elementor-panel-header {
-	background-color: #26292C;
-}
-
-@media (prefers-color-scheme: dark) {
-	.elementor-beta.elementor-beta-theme-auto .elementor-panel #elementor-panel-header {
-		background-color: #26292C;
-	}
+	background-color: #0C0D0E;
+	color: #fff;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
 }

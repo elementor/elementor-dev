@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<a href="<?php echo esc_url( $activate_url ); ?>" class="button button-primary">
-			<?php echo esc_html__( 'Activate', 'elementor-beta' ); ?>
+			<?php echo esc_html__( 'Activate Now', 'elementor-beta' ); ?>
 		</a>
 	</p>
 </div>

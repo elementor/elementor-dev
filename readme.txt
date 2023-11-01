@@ -76,6 +76,9 @@ Beta versions are the designated version for release. Developer Edition versions
 
 == Changelog ==
 
+= 1.1.2 - 2023-11-01 =
+* Tweak: Added compatibility with the new color scheme
+
 = 1.1.1 - 2021-01-13 =
 * Fix: Wrong version detection when trying to rollback Elementor version
 

@@ -1,10 +1,10 @@
 === Elementor Beta (Developer Edition) ===
 Contributors: nevog, elemntor, KingYes, ariel.k
 Tags: elementor, website builder, beta, developer, bleeding edge, testing, landing page, drag-and-drop, visual editor
-Requires at least: 5.0
-Tested up to: 6.3
+Requires at least: 5.8
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

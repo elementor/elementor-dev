@@ -2,9 +2,9 @@
 Contributors: nevog, elemntor, KingYes, ariel.k
 Tags: elementor, website builder, beta, developer, bleeding edge, testing, landing page, drag-and-drop, visual editor
 Requires at least: 5.8
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,6 +75,9 @@ The features that roll out to stable versions will do so gradually. This means n
 Beta versions are the designated version for release. Developer Edition versions will include extra features for testing purposes and will be rolled out gradually.
 
 == Changelog ==
+
+= 1.1.3 - 2024-03-18 =
+* Tweak: Added Required Plugins header support for Elementor dependencies
 
 = 1.1.2 - 2023-11-01 =
 * Tweak: Added compatibility with the new color scheme

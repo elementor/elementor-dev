@@ -3,10 +3,12 @@
  * Plugin Name: Elementor Beta (Developer Edition)
  * Plugin URI: https://elementor.com
  * Description: Elementor Developer Edition gives you direct access into Elementor’s development process, and lets you take an active part in perfecting our product. Each Developer Edition release will contain experimental functionalities that developers will be able to use to get familiar with the next releases before they are published.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Elementor.com
  * Author URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=dev-author-uri&utm_medium=wp-dash
  * Text Domain: elementor-beta
+ *
+ * Requires Plugins: elementor
  *
  * @package elementor-beta
  */
@@ -41,7 +43,7 @@ if ( ! defined( 'ELEMENTOR_BETA_NAMESPACE' ) ) {
 }
 
 if ( ! defined( 'ELEMENTOR_BETA_VERSION' ) ) {
-	define( 'ELEMENTOR_BETA_VERSION', '1.1.2' );
+	define( 'ELEMENTOR_BETA_VERSION', '1.1.3' );
 }
 
 // Run autoloader

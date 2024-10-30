@@ -2,7 +2,7 @@
 Contributors: nevog, elemntor, KingYes, ariel.k
 Tags: elementor, website builder, beta, developer, bleeding edge, testing, landing page, drag-and-drop, visual editor
 Requires at least: 5.8
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 5.6
 Stable tag: 1.1.3
 License: GPLv3

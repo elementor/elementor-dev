@@ -14,7 +14,7 @@ class Test_Experiments extends Base_Test {
 		$data = [
 			'name' => 'test feature',
 			'state' => Manager::STATE_DEFAULT,
-			'release_status' => Manager::RELEASE_STATUS_RC,
+			'release_status' => Manager::RELEASE_STATUS_BETA,
 			'default' => Manager::STATE_INACTIVE,
 		];
 

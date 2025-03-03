@@ -32,7 +32,6 @@ class Experiments {
 	private function is_beta_release_or_higher( array $experimental_data ) {
 		$changeable_release_statues = [
 			ExperimentsManager::RELEASE_STATUS_BETA,
-			ExperimentsManager::RELEASE_STATUS_RC,
 			ExperimentsManager::RELEASE_STATUS_STABLE,
 		];
 
